@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+.navbar-nav {
+    width: 100%;
+    text-align: center;
+}
+
+.navbar-nav > li {
+    float: none;
+    display: inline-block;
+}
+
+.block {
+    margin-top: 2vh;
+    margin-bottom: 4vh;
+    padding: 2vh;
+    min-height: 60vh;
+    height: auto;
+    border: 1px solid darkblue;
+    border-radius: 4px;
+    width: 70%;
+}
+
+footer {
+    bottom: 0;
+    height: 10%;
+}
