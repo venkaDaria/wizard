@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import {MainComponent} from "../util/main.component";
+import {NavComponent} from "../util/nav.component";
 
 @Component({
     selector: 'step4-nav',
     templateUrl: 'templates/nav/step4.html'
 })
-export class NavComponent4 {
-    constructor() { }
+export class NavComponent4 extends NavComponent {
 }
 
 @Component({

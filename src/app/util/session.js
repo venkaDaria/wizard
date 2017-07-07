@@ -13,7 +13,7 @@ var Session = (function () {
         return null;
     };
     Session.has = function (key) {
-        return window.sessionStorage[key];
+        return !!window.sessionStorage[key];
     };
     Session.clear = function () {
         window.sessionStorage.clear();

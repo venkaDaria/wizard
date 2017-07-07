@@ -21,17 +21,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var main_component_1 = require("../util/main.component");
-var FinalNavComponent = (function () {
+var nav_component_1 = require("../util/nav.component");
+var FinalNavComponent = (function (_super) {
+    __extends(FinalNavComponent, _super);
     function FinalNavComponent() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     return FinalNavComponent;
-}());
+}(nav_component_1.NavComponent));
 FinalNavComponent = __decorate([
     core_1.Component({
         selector: 'final-nav',
         templateUrl: 'templates/nav/final.html'
-    }),
-    __metadata("design:paramtypes", [])
+    })
 ], FinalNavComponent);
 exports.FinalNavComponent = FinalNavComponent;
 var FinalMainComponent = (function (_super) {

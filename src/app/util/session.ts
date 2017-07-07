@@ -12,7 +12,7 @@ export class Session {
     }
 
     static has(key: string) {
-        return window.sessionStorage[key];
+        return !!window.sessionStorage[key];
     }
 
     static clear() {

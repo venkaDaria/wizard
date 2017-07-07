@@ -18,7 +18,6 @@ var MainComponent = (function () {
         session_1.Session.set(key, value);
     };
     MainComponent.prototype.get_value = function (key) {
-        console.log("v: " + session_1.Session.get(key));
         return session_1.Session.get(key);
     };
     MainComponent.prototype.clear = function () {
