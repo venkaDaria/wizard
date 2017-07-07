@@ -1,5 +1,4 @@
-import {Component, Injectable} from '@angular/core';
-import {AppComponent} from "../app.component";
+import {Component} from '@angular/core';
 import {MainComponent} from "../util/main.component";
 
 @Component({
