@@ -1,9 +1,9 @@
 <div class="container nav-block">
     <ul class="nav navbar-nav">
-        <li id="li1" class="success"><a href="/step1">✓</a></li>
-        <li id="li2" class="success"><a href="/step2">✓</a></li>
-        <li id="li3" class="active"><a href="/step3">Step 3</a></li>
-        <li id="li4"><a href="/step4">Step 4</a></li>
+        <li id="li1" class="success"><a href="/step1" class="btn" >✓</a></li>
+        <li id="li2" class="success"><a href="/step2" class="btn" >✓</a></li>
+        <li id="li3" class="active"><a href="/step3" class="btn" >Step 3</a></li>
+        <li id="li4"><a href="/step4" class="btn" [class.disabled]="!has_value('param3')">Step 4</a></li>
         <li id="li5"><a href="/final" class="btn" [class.disabled]="!has_value('param4')">Final</a></li>
     </ul>
 </div>
