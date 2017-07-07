@@ -1,14 +1,16 @@
-<header class="container-fluid bg-primary">
-    <h1 class="text-center">Angular Wizard</h1>
-</header>
+<div class="app">
+    <header class="container-fluid bg-primary">
+        <h1 class="text-center">Angular Wizard</h1>
+    </header>
 
-<nav class="navbar navbar-default">
-    <router-outlet name="nav"></router-outlet>
-</nav>
+    <nav class="navbar-default">
+        <router-outlet name="nav"></router-outlet>
+    </nav>
 
-<main class="container">
-    <router-outlet name="main"></router-outlet>
-</main>
+    <main class="container">
+        <router-outlet name="main"></router-outlet>
+    </main>
+</div>
 
 <footer class="container-fluid bg-primary">
     <router-outlet name="footer"></router-outlet>

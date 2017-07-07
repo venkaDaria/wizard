@@ -16,18 +16,18 @@ var MainComponent = (function () {
         this.router = router;
     }
     MainComponent.prototype.go = function (path) {
-        this.router.navigate(['./' + path, { outlets: { main: '', nav: '', footer: '' } }])
+        this.router.navigate(['/' + path, { outlets: { main: '', nav: '', footer: '' } }])
             .then(function (success) { return console.log('Go to ' + path); })
             .catch(function (err) { return console.error(err); });
     };
     MainComponent.prototype.go_prev = function (path) {
-        this.router.navigate(['./' + path, { outlets: { main: '', nav: '', footer: '' } }])
+        this.router.navigate(['/' + path, { outlets: { main: '', nav: '', footer: '' } }])
             .then(function (success) { return console.log('Go to ' + path); })
             .catch(function (err) { return console.error(err); });
     };
     MainComponent.prototype.go_next = function (path) {
-        console.log(this.router.createUrlTree(['./' + path, { outlets: { main: '', nav: '', footer: '' } }]).toString());
-        this.router.navigate(['./' + path, { outlets: { main: '', nav: '', footer: '' } }])
+        var url = this.router.createUrlTree(['/' + path, { outlets: { main: [''], nav: [''], footer: [''] } }]);
+        this.router.navigateByUrl(url)
             .then(function (success) { return console.log('Go to ' + path); })
             .catch(function (err) { return console.error(err); });
     };
