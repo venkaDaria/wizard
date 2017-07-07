@@ -1,10 +1,10 @@
 <div class="block center-block">
     <form>
         <div class="form-group">
-            <label>Param 4:</label><br/>
-            <input class="form-control" name="param4" value="{{getValue('param4')}}" required/>
+            <label for="param4">Param 4:</label><br/>
+            <input class="form-control" name="param4" id="param4" value="{{get_value('param4')}}" required/>
         </div>
         <a role="button" href="/step3" class="btn btn-success"><< Prev</a>
-        <a role="button" href="/final" (click)="go_next('param4')" class="btn btn-success">Next >></a>
+        <a role="button" href="/final" (click)="save('param4', $(param4).val)" class="btn btn-success">Next >></a>
     </form>
 </div>
