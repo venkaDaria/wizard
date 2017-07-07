@@ -2,9 +2,9 @@
     <form>
         <div class="form-group">
             <label>Param 3:</label><br/>
-            <input class="form-control" name="param3" required/>
+            <input class="form-control" name="param3" value="{{getValue('param3')}}" required/>
         </div>
-        <button (click)="go_prev('step2')" class="btn btn-success"><< Prev</button>
-        <button (click)="go_next('step4')" class="btn btn-success">Next >></button>
+        <a role="button" href="/step2" class="btn btn-success"><< Prev</a>
+        <a role="button" href="/step4" (click)="go_next('param3')" class="btn btn-success">Next >></a>
     </form>
 </div>

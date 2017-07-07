@@ -1,13 +1,13 @@
 <div class="block center-block">
     <label>Param 1:</label><br/>
-    <input class="form-control" name="param1" disabled/>
+    <input class="form-control" name="param1" value="{{getValue('param1')}}" disabled/>
     <br/><label>Param 2:</label><br/>
-    <input class="form-control" name="param2" disabled/>
+    <input class="form-control" name="param2" value="{{getValue('param2')}}" disabled/>
     <br/><label>Param 3:</label><br/>
-    <input class="form-control" name="param3" disabled/>
+    <input class="form-control" name="param3" value="{{getValue('param3')}}" disabled/>
     <br/><label>Param 4:</label><br/>
-    <input class="form-control" name="param4" disabled/>
+    <input class="form-control" name="param4" value="{{getValue('param4')}}" disabled/>
     <br/>
 
-    <button (click)="go('/')" class="btn btn-success center-block">Retry</button>
+    <a href="/" (click)="go_retry()" role="button" class="btn btn-success center-block">Retry</a>
 </div>

@@ -11,25 +11,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = require("@angular/router");
 var core_1 = require("@angular/core");
+var session_1 = require("./session");
 var MainComponent = (function () {
     function MainComponent(router) {
         this.router = router;
     }
-    MainComponent.prototype.go = function (path) {
-        this.router.navigate(['/' + path, { outlets: { main: '', nav: '', footer: '' } }])
-            .then(function (success) { return console.log('Go to ' + path); })
-            .catch(function (err) { return console.error(err); });
+    MainComponent.prototype.go_next = function (param) {
+        console.log(session_1.Session);
+        console.log(param);
+        console.log(this.get(param));
+        session_1.Session.set(param, this.get(param));
     };
-    MainComponent.prototype.go_prev = function (path) {
-        this.router.navigate(['/' + path, { outlets: { main: '', nav: '', footer: '' } }])
-            .then(function (success) { return console.log('Go to ' + path); })
-            .catch(function (err) { return console.error(err); });
+    MainComponent.prototype.get = function (param) {
+        console.log(this.router);
+        return this.router.parseUrl(this.router.url).queryParamMap.get(param);
     };
-    MainComponent.prototype.go_next = function (path) {
-        var url = this.router.createUrlTree(['/' + path, { outlets: { main: [''], nav: [''], footer: [''] } }]);
-        this.router.navigateByUrl(url)
-            .then(function (success) { return console.log('Go to ' + path); })
-            .catch(function (err) { return console.error(err); });
+    MainComponent.go_retry = function () {
+        session_1.Session.clear();
+    };
+    MainComponent.get_value = function (param) {
+        console.log(session_1.Session);
+        console.log(param);
+        console.log(session_1.Session.get(param));
+        return session_1.Session.get(param);
     };
     return MainComponent;
 }());

@@ -1,6 +1,6 @@
 import {Component, Injectable} from '@angular/core';
 import {AppComponent} from "../app.component";
-import {MainComponent} from "../parents/main.component";
+import {MainComponent} from "../util/main.component";
 
 @Component({
     selector: 'step1-nav',

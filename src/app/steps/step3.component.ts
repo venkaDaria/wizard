@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {MainComponent} from "../parents/main.component";
+import {MainComponent} from "../util/main.component";
 
 @Component({
     selector: 'step3-nav',

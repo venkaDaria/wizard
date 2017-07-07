@@ -20,7 +20,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var main_component_1 = require("../parents/main.component");
+var main_component_1 = require("../util/main.component");
 var NavComponent4 = (function () {
     function NavComponent4() {
     }

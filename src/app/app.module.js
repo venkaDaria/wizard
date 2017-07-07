@@ -17,31 +17,31 @@ var step4_component_1 = require("./steps/step4.component");
 var final_component_1 = require("./steps/final.component");
 var appRoutes = [
     { path: '', redirectTo: 'step1', pathMatch: 'full' },
-    { path: 'step1', pathMatch: 'full', children: [
+    { path: 'step1', children: [
             { path: '', component: step1_component_1.MainComponent1, outlet: 'main' },
             { path: '', component: step1_component_1.NavComponent1, outlet: 'nav' },
             { path: '', component: step1_component_1.FooterComponent1, outlet: 'footer' },
         ]
     },
-    { path: 'step2', pathMatch: 'full', children: [
+    { path: 'step2', children: [
             { path: '', component: step2_component_1.MainComponent2, outlet: 'main' },
             { path: '', component: step2_component_1.NavComponent2, outlet: 'nav' },
             { path: '', component: step2_component_1.FooterComponent2, outlet: 'footer' },
         ]
     },
-    { path: 'step3', pathMatch: 'full', children: [
+    { path: 'step3', children: [
             { path: '', component: step3_component_1.MainComponent3, outlet: 'main' },
             { path: '', component: step3_component_1.NavComponent3, outlet: 'nav' },
             { path: '', component: step3_component_1.FooterComponent3, outlet: 'footer' },
         ]
     },
-    { path: 'step4', pathMatch: 'full', children: [
+    { path: 'step4', children: [
             { path: '', component: step4_component_1.MainComponent4, outlet: 'main' },
             { path: '', component: step4_component_1.NavComponent4, outlet: 'nav' },
             { path: '', component: step4_component_1.FooterComponent4, outlet: 'footer' },
         ]
     },
-    { path: 'final', pathMatch: 'full', children: [
+    { path: 'final', children: [
             { path: '', component: final_component_1.FinalMainComponent, outlet: 'main' },
             { path: '', component: final_component_1.FinalNavComponent, outlet: 'nav' },
             { path: '', component: final_component_1.FinalFooterComponent, outlet: 'footer' },

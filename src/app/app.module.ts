@@ -12,35 +12,35 @@ import { FinalNavComponent, FinalMainComponent, FinalFooterComponent }  from './
 const appRoutes: Routes = [
     { path: '', redirectTo: 'step1', pathMatch: 'full'},
 
-    { path: 'step1', pathMatch: 'full', children: [
+    { path: 'step1', children: [
         { path: '', component: MainComponent1, outlet: 'main' },
         { path: '', component: NavComponent1, outlet: 'nav' },
         { path: '', component: FooterComponent1, outlet: 'footer' },
     ]
     },
 
-    { path: 'step2', pathMatch: 'full', children: [
+    { path: 'step2', children: [
         { path: '', component: MainComponent2, outlet: 'main' },
         { path: '', component: NavComponent2, outlet: 'nav' },
         { path: '', component: FooterComponent2, outlet: 'footer' },
     ]
     },
 
-    { path: 'step3', pathMatch: 'full', children: [
+    { path: 'step3', children: [
         { path: '', component: MainComponent3, outlet: 'main' },
         { path: '', component: NavComponent3, outlet: 'nav' },
         { path: '', component: FooterComponent3, outlet: 'footer' },
     ]
     },
 
-    { path: 'step4', pathMatch: 'full', children: [
+    { path: 'step4', children: [
         { path: '', component: MainComponent4, outlet: 'main' },
         { path: '', component: NavComponent4, outlet: 'nav' },
         { path: '', component: FooterComponent4, outlet: 'footer' },
     ]
     },
 
-    { path: 'final', pathMatch: 'full', children: [
+    { path: 'final',  children: [
         { path: '', component: FinalMainComponent, outlet: 'main' },
         { path: '', component: FinalNavComponent, outlet: 'nav' },
         { path: '', component: FinalFooterComponent, outlet: 'footer' },
