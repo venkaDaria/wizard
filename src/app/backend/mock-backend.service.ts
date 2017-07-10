@@ -35,7 +35,7 @@ export class MockBackendService {
                     console.log()
                     if (!parsedUrl.param.match('^\\d+$')) {
                         let msg = 'Param3 must contain only digits';
-                        answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '\n' + msg;
+                        answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '. ' + msg;
                     }
                     break;
                 case MockBackendService.url + 'param4':

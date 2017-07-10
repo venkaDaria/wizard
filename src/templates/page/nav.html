@@ -1,21 +1,21 @@
 <ul class="nav nav-pills nav-justified thumbnail">
     <li id="li1" [class.active]="url_equals('/step1')" [class.bg-success]="has_value('param1')" title="Step 1">
-        <a href="/step1">Step 1</a>
+        <a (click)="go('/step1')">Step 1</a>
     </li>
     <li id="li2" [class.active]="url_equals('/step2')" [class.disabled]="!has_value('param1')"
         [class.bg-success]="has_value('param2')" title="Step 2">
-        <a href="/step2">Step 2</a>
+        <a (click)="go('/step2')">Step 2</a>
     </li>
     <li id="li3" [class.active]="url_equals('/step3')" [class.disabled]="!has_value('param2')"
         [class.bg-success]="has_value('param3')" title="Step 3">
-        <a href="/step3">Step 3</a>
+        <a (click)="go('/step3')">Step 3</a>
     </li>
     <li id="li4" [class.active]="url_equals('/step4')" [class.disabled]="!has_value('param3')"
         [class.bg-success]="has_value('param4')" title="Step 4">
-        <a href="/step4">Step 4</a>
+        <a (click)="go('/step4')">Step 4</a>
     </li>
     <li id="li5" [class.active]="url_equals('/final')" [class.disabled]="!has_value('param2')
             || !has_value('param3') || !has_value('param4')" title="Final">
-        <a href="/final">Final</a>
+        <a (click)="go('/final')">Final</a>
     </li>
 </ul>

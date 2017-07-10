@@ -1,4 +1,14 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12,18 +22,31 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var session_1 = require("../util/session");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var NavComponent = (function () {
-    function NavComponent(router) {
-        this.router = router;
+var NavComponentBase = (function () {
+    function NavComponentBase() {
     }
-    NavComponent.prototype.has_value = function (key) {
+    NavComponentBase.prototype.go = function (url) {
+        session_1.Session.remove('errorMessage');
+        window.location.href = url;
+    };
+    NavComponentBase.prototype.has_value = function (key) {
         return session_1.Session.has(key);
     };
+    return NavComponentBase;
+}());
+exports.NavComponentBase = NavComponentBase;
+var NavComponent = (function (_super) {
+    __extends(NavComponent, _super);
+    function NavComponent(router) {
+        var _this = _super.call(this) || this;
+        _this.router = router;
+        return _this;
+    }
     NavComponent.prototype.url_equals = function (url) {
         return this.router.url === url;
     };
     return NavComponent;
-}());
+}(NavComponentBase));
 NavComponent = __decorate([
     core_1.Component({
         selector: 'step-nav',

@@ -15,6 +15,10 @@ export class Session {
         return !!window.sessionStorage[key];
     }
 
+    static remove(key: string) {
+        window.sessionStorage.removeItem(key);
+    }
+
     static clear() {
         window.sessionStorage.clear();
     }

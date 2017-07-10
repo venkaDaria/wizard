@@ -4,6 +4,6 @@
         <input class="form-control" name="param2" id="param2" #param2
                value="{{get_value('param2')}}" required/>
     </div>
-    <a role="button" href="/step1" class="btn btn-success"><< Prev</a>
-    <a role="button" (click)="save('/step3', 'param2', param2.value)" class="btn btn-success">Next >></a>
+    <a role="button" (click)="go('/step1')" class="btn btn-success"><< Prev</a>
+    <a role="button" (click)="go_next('/step3', 'param2', param2.value)" class="btn btn-success">Next >></a>
 </form>

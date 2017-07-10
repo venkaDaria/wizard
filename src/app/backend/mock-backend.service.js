@@ -40,7 +40,7 @@ var MockBackendService = MockBackendService_1 = (function () {
                     console.log();
                     if (!parsedUrl.param.match('^\\d+$')) {
                         var msg = 'Param3 must contain only digits';
-                        answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '\n' + msg;
+                        answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '. ' + msg;
                     }
                     break;
                 case MockBackendService_1.url + 'param4':

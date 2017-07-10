@@ -15,6 +15,9 @@ var Session = (function () {
     Session.has = function (key) {
         return !!window.sessionStorage[key];
     };
+    Session.remove = function (key) {
+        window.sessionStorage.removeItem(key);
+    };
     Session.clear = function () {
         window.sessionStorage.clear();
     };

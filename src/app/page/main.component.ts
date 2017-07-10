@@ -1,33 +1,33 @@
 import {Session} from "../util/session";
 import {Component, Injectable, ViewChild} from "@angular/core";
 import {ValidationService} from "../service/wizard.service";
+import {NavComponentBase} from "./nav.component";
 
 @Component({
     selector: 'step-main',
     templateUrl: 'templates/page/main.html'
 })
 @Injectable()
-export class MainComponent {
+export class MainComponent extends NavComponentBase {
 
     @ViewChild('param1') param1: any;
     @ViewChild('param2') param2: any;
     @ViewChild('param3') param3: any;
     @ViewChild('param4') param4: any;
 
-    errorMessage: string;
-
     constructor(private service: ValidationService) {
+        super();
     }
 
-    save(url: string, key: string, value: string): void {
+    go_next(url: string, key: string, value: string): void {
         this.service.is_valid(key, value)
             .then(answer => {
                 if (answer['errorMessage']) {
-                    this.errorMessage = answer['errorMessage'];
-                    window.location.reload();
+                    Session.set('errorMessage', answer['errorMessage']);
                 }
                 else {
                     Session.set(key, value);
+                    Session.remove('errorMessage');
                     window.location.href = url;
                 }
             })
@@ -39,8 +39,13 @@ export class MainComponent {
         return Session.get(key);
     }
 
+    has_value(key: string): boolean {
+        return Session.has(key);
+    }
+
     clear(): void {
         Session.clear();
+        window.location.href = '/';
     }
 
     private handle_error(error: any): Promise<any> {
