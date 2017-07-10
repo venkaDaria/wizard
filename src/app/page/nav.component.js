@@ -13,9 +13,8 @@ var session_1 = require("../util/session");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var NavComponent = (function () {
-    function NavComponent(_router) {
-        this._router = _router;
-        this.router = _router;
+    function NavComponent(router) {
+        this.router = router;
     }
     NavComponent.prototype.has_value = function (key) {
         return session_1.Session.has(key);

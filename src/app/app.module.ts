@@ -11,63 +11,90 @@ import {FinalFooterComponent, FinalMainComponent} from "./step/final.component";
 import {FormsModule} from "@angular/forms";
 import {NavComponent} from "./page/nav.component";
 import {MainComponent} from "./page/main.component";
+import {MockBackend} from "@angular/http/testing";
+import {ValidationService} from "./service/wizard.service";
+import {BaseRequestOptions, Http, HttpModule} from "@angular/http";
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: 'step1', pathMatch: 'full'},
+    {path: '', redirectTo: 'step1', pathMatch: 'full'},
 
-    { path: 'step1', children: [
-        { path: '', component: NavComponent, outlet: 'nav' },
-        { path: '', component: MainComponent, outlet: 'main', children: [
-            {path: '', component: MainComponent1, outlet: 'step' },
-        ]},
-        { path: '', component: FooterComponent1, outlet: 'footer' },
+    {
+        path: 'step1', children: [
+        {path: '', component: NavComponent, outlet: 'nav'},
+        {
+            path: '', component: MainComponent, outlet: 'main', children: [
+            {path: '', component: MainComponent1, outlet: 'step'},
+        ]
+        },
+        {path: '', component: FooterComponent1, outlet: 'footer'},
     ]
     },
 
-    { path: 'step2', children: [
-        { path: '', component: NavComponent, outlet: 'nav' },
-        { path: '', component: MainComponent, outlet: 'main', children: [
-            {path: '', component: MainComponent2, outlet: 'step' },
-        ]},
-        { path: '', component: FooterComponent2, outlet: 'footer' },
+    {
+        path: 'step2', children: [
+        {path: '', component: NavComponent, outlet: 'nav'},
+        {
+            path: '', component: MainComponent, outlet: 'main', children: [
+            {path: '', component: MainComponent2, outlet: 'step'},
+        ]
+        },
+        {path: '', component: FooterComponent2, outlet: 'footer'},
     ]
     },
 
-    { path: 'step3', children: [
-        { path: '', component: NavComponent, outlet: 'nav' },
-        { path: '', component: MainComponent, outlet: 'main', children: [
-            {path: '', component: MainComponent3, outlet: 'step' },
-        ]},
-        { path: '', component: FooterComponent3, outlet: 'footer' },
+    {
+        path: 'step3', children: [
+        {path: '', component: NavComponent, outlet: 'nav'},
+        {
+            path: '', component: MainComponent, outlet: 'main', children: [
+            {path: '', component: MainComponent3, outlet: 'step'},
+        ]
+        },
+        {path: '', component: FooterComponent3, outlet: 'footer'},
     ]
     },
 
-    { path: 'step4', children: [
-        { path: '', component: NavComponent, outlet: 'nav' },
-        { path: '', component: MainComponent, outlet: 'main', children: [
-            {path: '', component: MainComponent4, outlet: 'step' },
-        ]},
-        { path: '', component: FooterComponent4, outlet: 'footer' },
+    {
+        path: 'step4', children: [
+        {path: '', component: NavComponent, outlet: 'nav'},
+        {
+            path: '', component: MainComponent, outlet: 'main', children: [
+            {path: '', component: MainComponent4, outlet: 'step'},
+        ]
+        },
+        {path: '', component: FooterComponent4, outlet: 'footer'},
     ]
     },
 
-    { path: 'final', children: [
-        { path: '', component: NavComponent, outlet: 'nav' },
-        { path: '', component: MainComponent, outlet: 'main', children: [
-            {path: '', component: FinalMainComponent, outlet: 'step' },
-        ]},
-        { path: '', component: FinalFooterComponent, outlet: 'footer' },
+    {
+        path: 'final', children: [
+        {path: '', component: NavComponent, outlet: 'nav'},
+        {
+            path: '', component: MainComponent, outlet: 'main', children: [
+            {path: '', component: FinalMainComponent, outlet: 'step'},
+        ]
+        },
+        {path: '', component: FinalFooterComponent, outlet: 'footer'},
     ]
     },
 ];
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
-    exports: [RouterModule],
-    declarations: [ AppComponent, NavComponent, MainComponent, MainComponent1, FooterComponent1,
+    imports: [BrowserModule, HttpModule, RouterModule.forRoot(appRoutes)],
+    declarations: [AppComponent, NavComponent, MainComponent, MainComponent1, FooterComponent1,
         MainComponent2, FooterComponent2, MainComponent3, FooterComponent3,
         MainComponent4, FooterComponent4, FinalMainComponent, FinalFooterComponent
     ],
+    providers: [
+        ValidationService,
+        MockBackend,
+        BaseRequestOptions,
+        {
+            provide: Http,
+            deps: [MockBackend, BaseRequestOptions],
+            useFactory: (backend: MockBackend, options: BaseRequestOptions) => { return new Http(backend, options); }
+        }],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

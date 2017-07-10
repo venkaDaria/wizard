@@ -13,5 +13,6 @@ export class FinalMainComponent extends MainComponent {
     templateUrl: 'templates/footer/final.html'
 })
 export class FinalFooterComponent {
-    constructor() { }
+    constructor() {
+    }
 }

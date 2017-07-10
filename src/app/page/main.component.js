@@ -11,17 +11,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var session_1 = require("../util/session");
 var core_1 = require("@angular/core");
+var wizard_service_1 = require("../service/wizard.service");
 var MainComponent = (function () {
-    function MainComponent() {
+    function MainComponent(service) {
+        this.service = service;
     }
     MainComponent.prototype.save = function (key, value) {
-        session_1.Session.set(key, value);
+        var _this = this;
+        this.service.is_valid(key, value)
+            .then(function (answer) { return !!answer['errorMessage'] ? session_1.Session.set(key, value)
+            : _this.errorMessage = answer['errorMessage']; })
+            .catch(this.handle_error);
     };
     MainComponent.prototype.get_value = function (key) {
         return session_1.Session.get(key);
     };
     MainComponent.prototype.clear = function () {
         session_1.Session.clear();
+    };
+    MainComponent.prototype.handle_error = function (error) {
+        console.error('An error occured', error);
+        return Promise.reject(error.message || error);
     };
     return MainComponent;
 }());
@@ -46,7 +56,8 @@ MainComponent = __decorate([
         selector: 'step-main',
         templateUrl: 'templates/page/main.html'
     }),
-    __metadata("design:paramtypes", [])
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [wizard_service_1.ValidationService])
 ], MainComponent);
 exports.MainComponent = MainComponent;
 //# sourceMappingURL=main.component.js.map

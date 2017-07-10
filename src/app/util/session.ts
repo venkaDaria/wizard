@@ -5,7 +5,7 @@ export class Session {
     }
 
     static get(key: string) {
-        if(Session.has(key)) {
+        if (Session.has(key)) {
             return JSON.parse(window.sessionStorage[key]);
         }
         return null;

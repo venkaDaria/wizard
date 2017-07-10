@@ -10,17 +10,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var mock_backend_service_1 = require("./backend/mock-backend.service");
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(mockBackendService) {
+        this.mockBackendService = mockBackendService;
+        this.mockBackendService.start();
     }
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'app-component',
-        templateUrl: 'templates/app.html'
+        templateUrl: 'templates/app.html',
+        providers: [mock_backend_service_1.MockBackendService]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [mock_backend_service_1.MockBackendService])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

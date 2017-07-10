@@ -1,28 +1,41 @@
 import {Session} from "../util/session";
-import {Component, ViewChild} from "@angular/core";
+import {Component, Injectable, ViewChild} from "@angular/core";
+import {ValidationService} from "../service/wizard.service";
 
 @Component({
     selector: 'step-main',
     templateUrl: 'templates/page/main.html'
 })
+@Injectable()
 export class MainComponent {
 
-    @ViewChild('param1') param1 : any;
-    @ViewChild('param2') param2 : any;
-    @ViewChild('param3') param3 : any;
-    @ViewChild('param4') param4 : any;
+    @ViewChild('param1') param1: any;
+    @ViewChild('param2') param2: any;
+    @ViewChild('param3') param3: any;
+    @ViewChild('param4') param4: any;
 
-    constructor(){}
+    errorMessage: string;
 
-    save(key: string, value: string) : void {
-        Session.set(key, value);
+    constructor(private service: ValidationService) {
     }
 
-    get_value(key: string) : string {
+    save(key: string, value: string): void {
+        this.service.is_valid(key, value)
+            .then(answer => !!answer['errorMessage'] ? Session.set(key, value)
+                : this.errorMessage = answer['errorMessage'])
+            .catch(this.handle_error);
+    }
+
+    get_value(key: string): string {
         return Session.get(key);
     }
 
-    clear() : void {
+    clear(): void {
         Session.clear();
+    }
+
+    private handle_error(error: any): Promise<any> {
+        console.error('An error occured', error);
+        return Promise.reject(error.message || error);
     }
 }

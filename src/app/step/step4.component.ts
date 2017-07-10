@@ -13,5 +13,6 @@ export class MainComponent4 extends MainComponent {
     templateUrl: 'templates/footer/step4.html'
 })
 export class FooterComponent4 {
-    constructor() { }
+    constructor() {
+    }
 }

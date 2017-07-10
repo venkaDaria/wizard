@@ -9,17 +9,14 @@ import {Router} from "@angular/router";
 @Injectable()
 export class NavComponent {
 
-    private router: Router;
-
-    constructor(private _router: Router) {
-        this.router = _router;
+    constructor(private router: Router) {
     }
 
-    has_value(key: string) : boolean {
+    has_value(key: string): boolean {
         return Session.has(key);
     }
 
-    url_equals(url: string) : boolean {
+    url_equals(url: string): boolean {
         return this.router.url === url;
     }
 }
