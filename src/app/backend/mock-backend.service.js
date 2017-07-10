@@ -19,26 +19,25 @@ var MockBackendService = MockBackendService_1 = (function () {
     MockBackendService.prototype.start = function () {
         console.log('MockBackendService start');
         this.backend.connections.subscribe(function (c) {
-            console.log('mockConnection url:: ' + c.request.getBody());
-            var params = JSON.parse(c.request.getBody());
-            var value = params.param;
+            console.log('mockConnection url:: ' + c.request.url);
+            var parsedUrl = MockBackendService_1.parse(c.request.url);
             var answer = {};
-            switch (c.request.url) {
+            switch (parsedUrl.url) {
                 case MockBackendService_1.url + 'param1':
-                    if (value.length < 7) {
+                    if (parsedUrl.param.length < 7) {
                         answer['errorMessage'] = 'Param1 must be at least 7';
                     }
                     break;
                 case MockBackendService_1.url + 'param2':
-                    if (value !== 'hello') {
+                    if (parsedUrl.param !== 'hello') {
                         answer['errorMessage'] = 'Param2 must be exactly "hello"';
                     }
                     break;
                 case MockBackendService_1.url + 'param3':
-                    if (value.length < 5) {
+                    if (parsedUrl.param.length < 5) {
                         answer['errorMessage'] = 'Param3 must be at least 5';
                     }
-                    if (!value.match('^\d+$')) {
+                    if (!parsedUrl.param.match('^\d+$')) {
                         answer['errorMessage'] += '\nParam3 must contain only digits';
                     }
                     break;
@@ -54,9 +53,15 @@ var MockBackendService = MockBackendService_1 = (function () {
             })));
         });
     };
+    MockBackendService.parse = function (url) {
+        return {
+            url: url.split('?')[0],
+            param: url.split('?')[1].split('=')[1]
+        };
+    };
     return MockBackendService;
 }());
-MockBackendService.url = 'http://localhost:3000/api/valid';
+MockBackendService.url = 'http://localhost:3000/api/valid/';
 MockBackendService = MockBackendService_1 = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [testing_1.MockBackend])

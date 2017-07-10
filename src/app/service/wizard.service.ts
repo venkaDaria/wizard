@@ -9,7 +9,7 @@ export class ValidationService {
     }
 
     is_valid(key: string, value: string): Promise<string> {
-        return this.http.post(MockBackendService.url + key, new RequestOptions({
+        return this.http.get(MockBackendService.url + key, new RequestOptions({
             params: {param: value}
         }))
             .toPromise()

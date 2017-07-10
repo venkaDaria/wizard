@@ -4,7 +4,7 @@ import {Response, ResponseOptions} from '@angular/http';
 
 @Injectable()
 export class MockBackendService {
-    static url: string = 'http://localhost:3000/api/valid';
+    static url: string = 'http://localhost:3000/api/valid/';
 
     constructor(private backend: MockBackend) {
     }
@@ -12,28 +12,27 @@ export class MockBackendService {
     start(): void {
         console.log('MockBackendService start');
         this.backend.connections.subscribe((c: MockConnection) => {
-            console.log('mockConnection url:: ' + c.request.getBody());
+            console.log('mockConnection url:: ' + c.request.url);
 
-            const params = JSON.parse(c.request.getBody());
-            const value = params.param;
+            const parsedUrl = MockBackendService.parse(c.request.url);
             let answer = {};
 
-            switch (c.request.url) {
+            switch (parsedUrl.url) {
                 case MockBackendService.url + 'param1':
-                    if (value.length < 7) {
+                    if (parsedUrl.param.length < 7) {
                         answer['errorMessage'] = 'Param1 must be at least 7';
                     }
                     break;
                 case MockBackendService.url + 'param2':
-                    if (value !== 'hello') {
+                    if (parsedUrl.param !== 'hello') {
                         answer['errorMessage'] = 'Param2 must be exactly "hello"';
                     }
                     break;
                 case MockBackendService.url + 'param3':
-                    if (value.length < 5) {
+                    if (parsedUrl.param.length < 5) {
                         answer['errorMessage'] = 'Param3 must be at least 5';
                     }
-                    if (!value.match('^\d+$')) {
+                    if (!parsedUrl.param.match('^\d+$')) {
                         answer['errorMessage'] += '\nParam3 must contain only digits';
                     }
                     break;
@@ -50,5 +49,12 @@ export class MockBackendService {
                 body: JSON.stringify(answer)
             })));
         });
+    }
+
+    private static parse(url: String) : any {
+        return {
+            url: url.split('?')[0],
+            param: url.split('?')[1].split('=')[1]
+        };
     }
 }

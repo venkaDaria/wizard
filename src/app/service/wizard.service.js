@@ -18,7 +18,7 @@ var ValidationService = (function () {
         this.http = http;
     }
     ValidationService.prototype.is_valid = function (key, value) {
-        return this.http.post(mock_backend_service_1.MockBackendService.url + key, new http_1.RequestOptions({
+        return this.http.get(mock_backend_service_1.MockBackendService.url + key, new http_1.RequestOptions({
             params: { param: value }
         }))
             .toPromise()
