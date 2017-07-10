@@ -3,10 +3,18 @@ html, body {
     height: 100%;
 }
 
+/* sticky footer */
+
 footer {
     height: 10%;
 }
 
 .app {
     min-height: 90%;
+}
+
+/* disable links */
+
+.disabled a {
+    pointer-events: none;
 }
