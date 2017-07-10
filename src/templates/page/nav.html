@@ -1,0 +1,18 @@
+<ul class="nav nav-pills nav-justified thumbnail">
+    <li id="li1" [class.active]="url_equals('/step1')">
+        <a href="/step1">Step 1</a>
+    </li>
+    <li id="li2" [class.active]="url_equals('/step2')" [class.disabled]="!has_value('param1')">
+        <a href="/step2">Step 2</a>
+    </li>
+    <li id="li3" [class.active]="url_equals('/step3')" [class.disabled]="!has_value('param2')">
+        <a href="/step3">Step 3</a>
+    </li>
+    <li id="li4" [class.active]="url_equals('/step4')" [class.disabled]="!has_value('param3')">
+        <a href="/step4">Step 4</a>
+    </li>
+    <li id="li5" [class.active]="url_equals('/final')" [class.disabled]="!has_value('param2')
+            || !has_value('param3') || !has_value('param4')">
+        <a href="/final">Final</a>
+    </li>
+</ul>

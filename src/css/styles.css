@@ -1,8 +1,5 @@
-* {
-    margin: 0;
-}
-
 html, body {
+    margin: 0;
     height: 100%;
 }
 
@@ -12,25 +9,4 @@ footer {
 
 .app {
     min-height: 90%;
-}
-
-.navbar-nav {
-    width: 100%;
-}
-
-.navbar-nav > li {
-    text-align: center;
-    width: 20%;
-    display: inline-block;
-}
-
-.block {
-    margin-top: 4vh;
-    margin-bottom: 4vh;
-    padding: 2vh;
-    min-height: 60vh;
-    height: auto;
-    border: 1px solid darkblue;
-    border-radius: 4px;
-    width: 70%;
 }

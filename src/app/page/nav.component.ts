@@ -1,10 +1,10 @@
-import {Session} from "./session";
+import {Session} from "../util/session";
 import {Component, Injectable} from "@angular/core";
 import {Router} from "@angular/router";
 
 @Component({
     selector: 'step-nav',
-    templateUrl: 'templates/nav/nav.html'
+    templateUrl: 'templates/page/nav.html'
 })
 @Injectable()
 export class NavComponent {

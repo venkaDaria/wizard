@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var session_1 = require("./session");
+var session_1 = require("../util/session");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var NavComponent = (function () {
@@ -28,7 +28,7 @@ var NavComponent = (function () {
 NavComponent = __decorate([
     core_1.Component({
         selector: 'step-nav',
-        templateUrl: 'templates/nav/nav.html'
+        templateUrl: 'templates/page/nav.html'
     }),
     core_1.Injectable(),
     __metadata("design:paramtypes", [router_1.Router])

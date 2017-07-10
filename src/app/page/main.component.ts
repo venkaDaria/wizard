@@ -1,6 +1,10 @@
-import {Session} from "./session";
-import {ViewChild} from "@angular/core";
+import {Session} from "../util/session";
+import {Component, ViewChild} from "@angular/core";
 
+@Component({
+    selector: 'step-main',
+    templateUrl: 'templates/page/main.html'
+})
 export class MainComponent {
 
     @ViewChild('param1') param1 : any;

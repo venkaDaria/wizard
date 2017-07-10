@@ -20,7 +20,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var main_component_1 = require("../util/main.component");
+var main_component_1 = require("../page/main.component");
 var MainComponent2 = (function (_super) {
     __extends(MainComponent2, _super);
     function MainComponent2() {
@@ -31,7 +31,7 @@ var MainComponent2 = (function (_super) {
 MainComponent2 = __decorate([
     core_1.Component({
         selector: 'step2-main',
-        templateUrl: 'templates/main/step2.html'
+        templateUrl: 'templates/step/step2.html'
     })
 ], MainComponent2);
 exports.MainComponent2 = MainComponent2;

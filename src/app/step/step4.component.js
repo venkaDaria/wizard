@@ -20,32 +20,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var main_component_1 = require("../util/main.component");
-var MainComponent3 = (function (_super) {
-    __extends(MainComponent3, _super);
-    function MainComponent3() {
+var main_component_1 = require("../page/main.component");
+var MainComponent4 = (function (_super) {
+    __extends(MainComponent4, _super);
+    function MainComponent4() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    return MainComponent3;
+    return MainComponent4;
 }(main_component_1.MainComponent));
-MainComponent3 = __decorate([
+MainComponent4 = __decorate([
     core_1.Component({
-        selector: 'step3-main',
-        templateUrl: 'templates/main/step3.html'
+        selector: 'step4-main',
+        templateUrl: 'templates/step/step4.html'
     })
-], MainComponent3);
-exports.MainComponent3 = MainComponent3;
-var FooterComponent3 = (function () {
-    function FooterComponent3() {
+], MainComponent4);
+exports.MainComponent4 = MainComponent4;
+var FooterComponent4 = (function () {
+    function FooterComponent4() {
     }
-    return FooterComponent3;
+    return FooterComponent4;
 }());
-FooterComponent3 = __decorate([
+FooterComponent4 = __decorate([
     core_1.Component({
-        selector: 'step3-footer',
-        templateUrl: 'templates/footer/step3.html'
+        selector: 'step4-footer',
+        templateUrl: 'templates/footer/step4.html'
     }),
     __metadata("design:paramtypes", [])
-], FooterComponent3);
-exports.FooterComponent3 = FooterComponent3;
-//# sourceMappingURL=step3.component.js.map
+], FooterComponent4);
+exports.FooterComponent4 = FooterComponent4;
+//# sourceMappingURL=step4.component.js.map

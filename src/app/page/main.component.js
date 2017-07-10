@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var session_1 = require("./session");
+var session_1 = require("../util/session");
 var core_1 = require("@angular/core");
 var MainComponent = (function () {
     function MainComponent() {
@@ -41,5 +41,12 @@ __decorate([
     core_1.ViewChild('param4'),
     __metadata("design:type", Object)
 ], MainComponent.prototype, "param4", void 0);
+MainComponent = __decorate([
+    core_1.Component({
+        selector: 'step-main',
+        templateUrl: 'templates/page/main.html'
+    }),
+    __metadata("design:paramtypes", [])
+], MainComponent);
 exports.MainComponent = MainComponent;
 //# sourceMappingURL=main.component.js.map

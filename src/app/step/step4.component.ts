@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
-import {MainComponent} from "../util/main.component";
-import {NavComponent} from "../util/nav.component";
+import {Component} from "@angular/core";
+import {MainComponent} from "../page/main.component";
 
 @Component({
     selector: 'step4-main',
-    templateUrl: 'templates/main/step4.html'
+    templateUrl: 'templates/step/step4.html'
 })
 export class MainComponent4 extends MainComponent {
 }
