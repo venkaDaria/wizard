@@ -16,43 +16,49 @@ var MockBackendService = MockBackendService_1 = (function () {
     function MockBackendService(backend) {
         this.backend = backend;
     }
-    MockBackendService.prototype.start = function () {
+    MockBackendService.prototype.delay = function (ms) {
+        return new Promise(function (resolve) { return setTimeout(resolve, ms); });
+    };
+    MockBackendService.prototype.start = function (ms) {
+        var _this = this;
         console.log('MockBackendService start');
         this.backend.connections.subscribe(function (c) {
-            console.log('mockConnection url:: ' + c.request.url);
-            var parsedUrl = MockBackendService_1.parse(c.request.url);
-            var answer = {};
-            switch (parsedUrl.url) {
-                case MockBackendService_1.url + 'param1':
-                    if (parsedUrl.param.length < 7) {
-                        answer['errorMessage'] = 'Param1 must be at least 7';
-                    }
-                    break;
-                case MockBackendService_1.url + 'param2':
-                    if (parsedUrl.param !== 'hello') {
-                        answer['errorMessage'] = 'Param2 must be exactly "hello"';
-                    }
-                    break;
-                case MockBackendService_1.url + 'param3':
-                    if (parsedUrl.param.length < 5) {
-                        answer['errorMessage'] = 'Param3 must be at least 5';
-                    }
-                    console.log();
-                    if (!parsedUrl.param.match('^\\d+$')) {
-                        var msg = 'Param3 must contain only digits';
-                        answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '. ' + msg;
-                    }
-                    break;
-                case MockBackendService_1.url + 'param4':
-                    break;
-                default:
-                    answer['errorMessage'] = 'Request is incorrect';
-                    break;
-            }
-            console.log(JSON.stringify(answer));
-            c.mockRespond(new http_1.Response(new http_1.ResponseOptions({
-                body: JSON.stringify(answer)
-            })));
+            _this.delay(ms).then(function () {
+                console.log('mockConnection url:: ' + c.request.url);
+                var parsedUrl = MockBackendService_1.parse(c.request.url);
+                var answer = {};
+                switch (parsedUrl.url) {
+                    case MockBackendService_1.url + 'param1':
+                        if (parsedUrl.param.length < 7) {
+                            answer['errorMessage'] = 'Param1 must be at least 7';
+                        }
+                        break;
+                    case MockBackendService_1.url + 'param2':
+                        if (parsedUrl.param !== 'hello') {
+                            answer['errorMessage'] = 'Param2 must be exactly "hello"';
+                        }
+                        break;
+                    case MockBackendService_1.url + 'param3':
+                        if (parsedUrl.param.length < 5) {
+                            answer['errorMessage'] = 'Param3 must be at least 5';
+                        }
+                        console.log();
+                        if (!parsedUrl.param.match('^\\d+$')) {
+                            var msg = 'Param3 must contain only digits';
+                            answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '. ' + msg;
+                        }
+                        break;
+                    case MockBackendService_1.url + 'param4':
+                        break;
+                    default:
+                        answer['errorMessage'] = 'Request is incorrect';
+                        break;
+                }
+                console.log(JSON.stringify(answer));
+                c.mockRespond(new http_1.Response(new http_1.ResponseOptions({
+                    body: JSON.stringify(answer)
+                })));
+            });
         });
     };
     MockBackendService.parse = function (url) {

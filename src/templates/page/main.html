@@ -8,5 +8,9 @@
                 <strong>Error!</strong> <p>{{get_value('errorMessage')}}<p>
             </div>
         </ng-template>
+
+        <ng-template [ngIf]="loading">
+            <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+        </ng-template>
     </div>
 </div>

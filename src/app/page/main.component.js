@@ -28,9 +28,12 @@ var MainComponent = (function (_super) {
     function MainComponent(service) {
         var _this = _super.call(this) || this;
         _this.service = service;
+        _this.loading = false;
         return _this;
     }
     MainComponent.prototype.go_next = function (url, key, value) {
+        var _this = this;
+        this.loading = true;
         this.service.is_valid(key, value)
             .then(function (answer) {
             if (answer['errorMessage']) {
@@ -41,6 +44,7 @@ var MainComponent = (function (_super) {
                 session_1.Session.remove('errorMessage');
                 window.location.href = url;
             }
+            _this.loading = false;
         })
             .catch(this.handle_error);
     };
@@ -56,6 +60,7 @@ var MainComponent = (function (_super) {
     };
     MainComponent.prototype.handle_error = function (error) {
         console.error('An error occured', error);
+        this.loading = false;
         return Promise.reject(error.message || error);
     };
     return MainComponent;

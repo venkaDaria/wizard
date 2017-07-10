@@ -21,7 +21,7 @@ export class NavComponentBase {
     templateUrl: 'templates/page/nav.html'
 })
 @Injectable()
-export class NavComponent extends NavComponentBase{
+export class NavComponent extends NavComponentBase {
     constructor(private router: Router) {
         super();
     }

@@ -14,7 +14,7 @@ var mock_backend_service_1 = require("./backend/mock-backend.service");
 var AppComponent = (function () {
     function AppComponent(mockBackendService) {
         this.mockBackendService = mockBackendService;
-        this.mockBackendService.start();
+        this.mockBackendService.start(5000);
     }
     return AppComponent;
 }());

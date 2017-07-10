@@ -8,6 +8,6 @@ import {MockBackendService} from "./backend/mock-backend.service";
 })
 export class AppComponent {
     constructor(private mockBackendService: MockBackendService) {
-        this.mockBackendService.start();
+        this.mockBackendService.start(5000);
     }
 }
