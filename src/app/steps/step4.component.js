@@ -21,21 +21,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var main_component_1 = require("../util/main.component");
-var nav_component_1 = require("../util/nav.component");
-var NavComponent4 = (function (_super) {
-    __extends(NavComponent4, _super);
-    function NavComponent4() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    return NavComponent4;
-}(nav_component_1.NavComponent));
-NavComponent4 = __decorate([
-    core_1.Component({
-        selector: 'step4-nav',
-        templateUrl: 'templates/nav/step4.html'
-    })
-], NavComponent4);
-exports.NavComponent4 = NavComponent4;
 var MainComponent4 = (function (_super) {
     __extends(MainComponent4, _super);
     function MainComponent4() {

@@ -3,13 +3,6 @@ import {MainComponent} from "../util/main.component";
 import {NavComponent} from "../util/nav.component";
 
 @Component({
-    selector: 'step3-nav',
-    templateUrl: 'templates/nav/step3.html'
-})
-export class NavComponent3 extends NavComponent {
-}
-
-@Component({
     selector: 'step3-main',
     templateUrl: 'templates/main/step3.html'
 })
