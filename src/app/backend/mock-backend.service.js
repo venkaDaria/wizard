@@ -37,8 +37,10 @@ var MockBackendService = MockBackendService_1 = (function () {
                     if (parsedUrl.param.length < 5) {
                         answer['errorMessage'] = 'Param3 must be at least 5';
                     }
-                    if (!parsedUrl.param.match('^\d+$')) {
-                        answer['errorMessage'] += '\nParam3 must contain only digits';
+                    console.log();
+                    if (!parsedUrl.param.match('^\\d+$')) {
+                        var msg = 'Param3 must contain only digits';
+                        answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '\n' + msg;
                     }
                     break;
                 case MockBackendService_1.url + 'param4':

@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {MockBackend, MockConnection} from '@angular/http/testing';
-import {Response, ResponseOptions} from '@angular/http';
+import {Injectable} from "@angular/core";
+import {MockBackend, MockConnection} from "@angular/http/testing";
+import {Response, ResponseOptions} from "@angular/http";
 
 @Injectable()
 export class MockBackendService {
@@ -32,8 +32,10 @@ export class MockBackendService {
                     if (parsedUrl.param.length < 5) {
                         answer['errorMessage'] = 'Param3 must be at least 5';
                     }
-                    if (!parsedUrl.param.match('^\d+$')) {
-                        answer['errorMessage'] += '\nParam3 must contain only digits';
+                    console.log()
+                    if (!parsedUrl.param.match('^\\d+$')) {
+                        let msg = 'Param3 must contain only digits';
+                        answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '\n' + msg;
                     }
                     break;
                 case MockBackendService.url + 'param4':
@@ -51,7 +53,7 @@ export class MockBackendService {
         });
     }
 
-    private static parse(url: String) : any {
+    private static parse(url: String): any {
         return {
             url: url.split('?')[0],
             param: url.split('?')[1].split('=')[1]

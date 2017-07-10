@@ -19,11 +19,20 @@ export class MainComponent {
     constructor(private service: ValidationService) {
     }
 
-    save(key: string, value: string): void {
+    save(url: string, key: string, value: string): void {
         this.service.is_valid(key, value)
-            .then(answer => !!answer['errorMessage'] ? Session.set(key, value)
-                : this.errorMessage = answer['errorMessage'])
+            .then(answer => {
+                if (answer['errorMessage']) {
+                    this.errorMessage = answer['errorMessage'];
+                    window.location.reload();
+                }
+                else {
+                    Session.set(key, value);
+                    window.location.href = url;
+                }
+            })
             .catch(this.handle_error);
+
     }
 
     get_value(key: string): string {

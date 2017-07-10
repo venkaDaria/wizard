@@ -16,11 +16,19 @@ var MainComponent = (function () {
     function MainComponent(service) {
         this.service = service;
     }
-    MainComponent.prototype.save = function (key, value) {
+    MainComponent.prototype.save = function (url, key, value) {
         var _this = this;
         this.service.is_valid(key, value)
-            .then(function (answer) { return !!answer['errorMessage'] ? session_1.Session.set(key, value)
-            : _this.errorMessage = answer['errorMessage']; })
+            .then(function (answer) {
+            if (answer['errorMessage']) {
+                _this.errorMessage = answer['errorMessage'];
+                window.location.reload();
+            }
+            else {
+                session_1.Session.set(key, value);
+                window.location.href = url;
+            }
+        })
             .catch(this.handle_error);
     };
     MainComponent.prototype.get_value = function (key) {

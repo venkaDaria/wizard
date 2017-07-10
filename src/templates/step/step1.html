@@ -5,5 +5,5 @@
                value="{{get_value('param1')}}" required>
     </div>
     <a role="button" class="btn disabled"><< Prev</a>
-    <a role="button" href="/step2" (click)="save('param1', param1.value)" class="btn btn-success">Next >></a>
+    <a role="button" (click)="save('/step2', 'param1', param1.value)" class="btn btn-success">Next >></a>
 </form>
