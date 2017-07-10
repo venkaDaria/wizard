@@ -15,14 +15,14 @@ export class MainComponent extends NavComponentBase {
     @ViewChild('param3') param3: any;
     @ViewChild('param4') param4: any;
 
-    loading: boolean = false;
-
     constructor(private service: ValidationService) {
         super();
     }
 
     go_next(url: string, key: string, value: string): void {
-        this.loading = true;
+        Session.set('loading', true);
+        Session.remove('errorMessage');
+
         this.service.is_valid(key, value)
             .then(answer => {
                 if (answer['errorMessage']) {
@@ -30,10 +30,9 @@ export class MainComponent extends NavComponentBase {
                 }
                 else {
                     Session.set(key, value);
-                    Session.remove('errorMessage');
                     window.location.href = url;
                 }
-                this.loading = false;
+                Session.remove('loading');
             })
             .catch(this.handle_error);
 
@@ -54,7 +53,7 @@ export class MainComponent extends NavComponentBase {
 
     private handle_error(error: any): Promise<any> {
         console.error('An error occured', error);
-        this.loading = false;
+        Session.remove('loading');
 
         return Promise.reject(error.message || error);
     }

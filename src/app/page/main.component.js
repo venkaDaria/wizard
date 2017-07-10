@@ -28,12 +28,11 @@ var MainComponent = (function (_super) {
     function MainComponent(service) {
         var _this = _super.call(this) || this;
         _this.service = service;
-        _this.loading = false;
         return _this;
     }
     MainComponent.prototype.go_next = function (url, key, value) {
-        var _this = this;
-        this.loading = true;
+        session_1.Session.set('loading', true);
+        session_1.Session.remove('errorMessage');
         this.service.is_valid(key, value)
             .then(function (answer) {
             if (answer['errorMessage']) {
@@ -41,10 +40,9 @@ var MainComponent = (function (_super) {
             }
             else {
                 session_1.Session.set(key, value);
-                session_1.Session.remove('errorMessage');
                 window.location.href = url;
             }
-            _this.loading = false;
+            session_1.Session.remove('loading');
         })
             .catch(this.handle_error);
     };
@@ -60,7 +58,7 @@ var MainComponent = (function (_super) {
     };
     MainComponent.prototype.handle_error = function (error) {
         console.error('An error occured', error);
-        this.loading = false;
+        session_1.Session.remove('loading');
         return Promise.reject(error.message || error);
     };
     return MainComponent;
