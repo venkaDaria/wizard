@@ -34,9 +34,9 @@ var NavComponentBase = (function () {
             loading: 'loading'
         };
     }
-    NavComponentBase.prototype.go = function (url) {
+    NavComponentBase.prototype.go = function (idx) {
         session_1.Session.remove('errorMessage');
-        window.location.href = url;
+        window.location.href = this.steps[idx];
     };
     NavComponentBase.prototype.has_value = function (idx) {
         return session_1.Session.has(this.params[idx]);
@@ -51,8 +51,8 @@ var NavComponent = (function (_super) {
         _this.router = router;
         return _this;
     }
-    NavComponent.prototype.url_equals = function (url) {
-        return this.router.url === url;
+    NavComponent.prototype.url_equals = function (idx) {
+        return this.router.url === this.steps[idx];
     };
     return NavComponent;
 }(NavComponentBase));

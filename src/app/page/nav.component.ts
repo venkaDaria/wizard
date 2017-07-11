@@ -17,9 +17,9 @@ export class NavComponentBase {
     constructor() {
     }
 
-    go(url: string) {
+    go(idx: number) {
         Session.remove('errorMessage');
-        window.location.href = url;
+        window.location.href = this.steps[idx];
     }
 
     has_value(idx: number): boolean {
@@ -37,7 +37,7 @@ export class NavComponent extends NavComponentBase {
         super();
     }
 
-    url_equals(url: string): boolean {
-        return this.router.url === url;
+    url_equals(idx: number): boolean {
+        return this.router.url === this.steps[idx];
     }
 }
