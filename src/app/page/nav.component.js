@@ -30,7 +30,6 @@ var NavComponent = (function (_super) {
 }(base_component_1.BaseComponent));
 NavComponent = __decorate([
     core_1.Component({
-        selector: 'step-nav',
         templateUrl: 'templates/page/nav.html'
     })
 ], NavComponent);

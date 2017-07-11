@@ -7,10 +7,7 @@ var Session = (function () {
         window.sessionStorage.setItem(key, JSON.stringify(value));
     };
     Session.get = function (key) {
-        if (Session.has(key)) {
-            return JSON.parse(window.sessionStorage[key]);
-        }
-        return null;
+        return Session.has(key) ? JSON.parse(window.sessionStorage[key]) : null;
     };
     Session.has = function (key) {
         return !!window.sessionStorage[key];

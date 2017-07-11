@@ -2,7 +2,6 @@ import {Component} from "@angular/core";
 import {BaseComponent} from "./base.component";
 
 @Component({
-    selector: 'step-nav',
     templateUrl: 'templates/page/nav.html'
 })
 export class NavComponent extends BaseComponent {

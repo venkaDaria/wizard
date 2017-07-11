@@ -1,5 +1,4 @@
 import {NgModule} from "@angular/core";
-import {RouterModule} from "@angular/router";
 
 import {AppComponent} from "./app.component";
 import {FooterComponent1, MainComponent1} from "./step/step1.component";
@@ -11,20 +10,20 @@ import {NavComponent} from "./page/nav.component";
 import {MainComponent} from "./page/main.component";
 import {MockBackend} from "@angular/http/testing";
 import {ValidationService} from "./service/wizard.service";
-import {BaseRequestOptions, Http, HttpModule} from "@angular/http";
+import {BaseRequestOptions, Http} from "@angular/http";
 import {BrowserModule} from "@angular/platform-browser";
 import {routing} from "./app.routing";
-import {FormsModule} from "@angular/forms";
+import {MockBackendService} from "./backend/mock-backend.service";
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, HttpModule, routing],
-    exports: [RouterModule],
+    imports: [BrowserModule, routing],
     declarations: [AppComponent, NavComponent, MainComponent, MainComponent1, FooterComponent1,
         MainComponent2, FooterComponent2, MainComponent3, FooterComponent3,
         MainComponent4, FooterComponent4, FinalMainComponent, FinalFooterComponent
     ],
     providers: [
         ValidationService,
+        MockBackendService,
         MockBackend,
         BaseRequestOptions,
         {

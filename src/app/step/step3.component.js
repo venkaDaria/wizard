@@ -15,9 +15,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var main_component_1 = require("../page/main.component");
@@ -30,7 +27,6 @@ var MainComponent3 = (function (_super) {
 }(main_component_1.MainComponent));
 MainComponent3 = __decorate([
     core_1.Component({
-        selector: 'step3-main',
         templateUrl: 'templates/step/step3.html'
     })
 ], MainComponent3);
@@ -42,10 +38,8 @@ var FooterComponent3 = (function () {
 }());
 FooterComponent3 = __decorate([
     core_1.Component({
-        selector: 'step3-footer',
         templateUrl: 'templates/footer/step3.html'
-    }),
-    __metadata("design:paramtypes", [])
+    })
 ], FooterComponent3);
 exports.FooterComponent3 = FooterComponent3;
 //# sourceMappingURL=step3.component.js.map

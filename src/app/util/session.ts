@@ -4,14 +4,11 @@ export class Session {
         window.sessionStorage.setItem(key, JSON.stringify(value));
     }
 
-    static get(key: string) {
-        if (Session.has(key)) {
-            return JSON.parse(window.sessionStorage[key]);
-        }
-        return null;
+    static get(key: string): any {
+        return Session.has(key) ? JSON.parse(window.sessionStorage[key]) : null;
     }
 
-    static has(key: string) {
+    static has(key: string): boolean {
         return !!window.sessionStorage[key];
     }
 

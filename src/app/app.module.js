@@ -7,7 +7,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var step1_component_1 = require("./step/step1.component");
 var step2_component_1 = require("./step/step2.component");
@@ -21,7 +20,7 @@ var wizard_service_1 = require("./service/wizard.service");
 var http_1 = require("@angular/http");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_routing_1 = require("./app.routing");
-var forms_1 = require("@angular/forms");
+var mock_backend_service_1 = require("./backend/mock-backend.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -29,14 +28,14 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, app_routing_1.routing],
-        exports: [router_1.RouterModule],
+        imports: [platform_browser_1.BrowserModule, app_routing_1.routing],
         declarations: [app_component_1.AppComponent, nav_component_1.NavComponent, main_component_1.MainComponent, step1_component_1.MainComponent1, step1_component_1.FooterComponent1,
             step2_component_1.MainComponent2, step2_component_1.FooterComponent2, step3_component_1.MainComponent3, step3_component_1.FooterComponent3,
             step4_component_1.MainComponent4, step4_component_1.FooterComponent4, final_component_1.FinalMainComponent, final_component_1.FinalFooterComponent
         ],
         providers: [
             wizard_service_1.ValidationService,
+            mock_backend_service_1.MockBackendService,
             testing_1.MockBackend,
             http_1.BaseRequestOptions,
             {
