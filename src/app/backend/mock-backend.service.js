@@ -12,9 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var testing_1 = require("@angular/http/testing");
 var http_1 = require("@angular/http");
-var MockBackendService = MockBackendService_1 = (function () {
-    function MockBackendService(backend) {
+var router_1 = require("@angular/router");
+var MockBackendService = (function () {
+    function MockBackendService(backend, router) {
         this.backend = backend;
+        this.router = router;
     }
     MockBackendService.prototype.delay = function (ms) {
         return new Promise(function (resolve) { return setTimeout(resolve, ms); });
@@ -25,20 +27,20 @@ var MockBackendService = MockBackendService_1 = (function () {
         this.backend.connections.subscribe(function (c) {
             _this.delay(ms).then(function () {
                 console.log('mockConnection url:: ' + c.request.url);
-                var parsedUrl = MockBackendService_1.parse(c.request.url);
+                var parsedUrl = _this.router.parseUrl(c.request.url).queryParams;
                 var answer = {};
-                switch (parsedUrl.url) {
-                    case MockBackendService_1.url + 'param1':
+                switch (_this.router.url) {
+                    case '/step1':
                         if (parsedUrl.param.length < 7) {
                             answer['errorMessage'] = 'Param1 must be at least 7';
                         }
                         break;
-                    case MockBackendService_1.url + 'param2':
+                    case '/step2':
                         if (parsedUrl.param !== 'hello') {
                             answer['errorMessage'] = 'Param2 must be exactly "hello"';
                         }
                         break;
-                    case MockBackendService_1.url + 'param3':
+                    case '/step3':
                         if (parsedUrl.param.length < 5) {
                             answer['errorMessage'] = 'Param3 must be at least 5';
                         }
@@ -47,7 +49,7 @@ var MockBackendService = MockBackendService_1 = (function () {
                             answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '. ' + msg;
                         }
                         break;
-                    case MockBackendService_1.url + 'param4':
+                    case '/step4':
                         break;
                     default:
                         answer['errorMessage'] = 'Request is incorrect';
@@ -60,19 +62,12 @@ var MockBackendService = MockBackendService_1 = (function () {
             });
         });
     };
-    MockBackendService.parse = function (url) {
-        return {
-            url: url.split('?')[0],
-            param: url.split('?')[1].split('=')[1]
-        };
-    };
     return MockBackendService;
 }());
-MockBackendService.url = 'http://localhost:3000/api/valid/';
-MockBackendService = MockBackendService_1 = __decorate([
+MockBackendService.url = '/api/valid/';
+MockBackendService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [testing_1.MockBackend])
+    __metadata("design:paramtypes", [testing_1.MockBackend, router_1.Router])
 ], MockBackendService);
 exports.MockBackendService = MockBackendService;
-var MockBackendService_1;
 //# sourceMappingURL=mock-backend.service.js.map

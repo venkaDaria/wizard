@@ -1,12 +1,13 @@
 import {Injectable} from "@angular/core";
 import {MockBackend, MockConnection} from "@angular/http/testing";
 import {Response, ResponseOptions} from "@angular/http";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class MockBackendService {
-    static url: string = 'http://localhost:3000/api/valid/';
+    static url: string = '/api/valid/';
 
-    constructor(private backend: MockBackend) {
+    constructor(private backend: MockBackend, private router: Router) {
     }
 
     private delay(ms: number) {
@@ -19,21 +20,21 @@ export class MockBackendService {
             this.delay(ms).then(() => {
                 console.log('mockConnection url:: ' + c.request.url);
 
-                const parsedUrl = MockBackendService.parse(c.request.url);
+                const parsedUrl = this.router.parseUrl(c.request.url).queryParams;
                 let answer = {};
 
-                switch (parsedUrl.url) {
-                    case MockBackendService.url + 'param1':
+                switch (this.router.url) {
+                    case '/step1':
                         if (parsedUrl.param.length < 7) {
                             answer['errorMessage'] = 'Param1 must be at least 7';
                         }
                         break;
-                    case MockBackendService.url + 'param2':
+                    case '/step2':
                         if (parsedUrl.param !== 'hello') {
                             answer['errorMessage'] = 'Param2 must be exactly "hello"';
                         }
                         break;
-                    case MockBackendService.url + 'param3':
+                    case '/step3':
                         if (parsedUrl.param.length < 5) {
                             answer['errorMessage'] = 'Param3 must be at least 5';
                         }
@@ -42,7 +43,7 @@ export class MockBackendService {
                             answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '. ' + msg;
                         }
                         break;
-                    case MockBackendService.url + 'param4':
+                    case '/step4':
                         break;
                     default:
                         answer['errorMessage'] = 'Request is incorrect';
@@ -56,12 +57,5 @@ export class MockBackendService {
                 })));
             })
         });
-    }
-
-    private static parse(url: String): any {
-        return {
-            url: url.split('?')[0],
-            param: url.split('?')[1].split('=')[1]
-        };
     }
 }
