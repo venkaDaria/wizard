@@ -23,11 +23,13 @@ var session_1 = require("../util/session");
 var core_1 = require("@angular/core");
 var wizard_service_1 = require("../service/wizard.service");
 var base_component_1 = require("./base.component");
+var router_1 = require("@angular/router");
 var MainComponent = MainComponent_1 = (function (_super) {
     __extends(MainComponent, _super);
-    function MainComponent(service) {
-        var _this = _super.call(this) || this;
+    function MainComponent(service, router) {
+        var _this = _super.call(this, router) || this;
         _this.service = service;
+        _this.router = router;
         return _this;
     }
     MainComponent.prototype.goNext = function (idx, value) {
@@ -41,6 +43,11 @@ var MainComponent = MainComponent_1 = (function (_super) {
             }
             else {
                 session_1.Session.set(_this.params[idx], value);
+                /*
+                this.router.navigateByUrl(this.steps[idx])
+                    .then((success: any) => console.log('Go to ' + this.steps[idx]))
+                    .catch((err: any) => console.error(err));;
+                */
                 window.location.href = _this.steps[idx];
             }
             session_1.Session.remove('loading');
@@ -67,7 +74,7 @@ MainComponent = MainComponent_1 = __decorate([
         templateUrl: 'templates/page/main.html'
     }),
     core_1.Injectable(),
-    __metadata("design:paramtypes", [wizard_service_1.ValidationService])
+    __metadata("design:paramtypes", [wizard_service_1.ValidationService, router_1.Router])
 ], MainComponent);
 exports.MainComponent = MainComponent;
 var MainComponent_1;

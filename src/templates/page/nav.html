@@ -1,7 +1,7 @@
 <ul class="nav nav-pills nav-justified thumbnail">
     <ng-template ngFor let-i [ngForOf]="[0, 1, 2, 3, 4]">
         <li id="li{{i}}" [class.active]="urlEquals(i)" [class.disabled]="i != 0 && !hasValue(i)"
-            [class.bg-success]="hasValue(i + 1)" title="Step {{i + 1}}">
+            [class.bg-success]="hasValue(i + 1) || i == steps.length - 1 && hasValue(i)" title="Step {{i + 1}}">
 
             <a (click)="i != 0 && !hasValue(i) || go(i)">
                 <div *ngIf="i < steps.length - 1; else finalBlock">

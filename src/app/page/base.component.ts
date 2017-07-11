@@ -1,6 +1,9 @@
 import {Session} from "../util/session";
+import {Router} from "@angular/router";
+import {Injectable} from "@angular/core";
 
-export class BaseComponent {
+@Injectable()
+export abstract class BaseComponent {
     protected steps = ["/step1", "/step2", "/step3", "/step4", "/final"];
 
     protected params = {
@@ -12,10 +15,10 @@ export class BaseComponent {
         loading: 'loading'
     };
 
-    constructor() {
+    constructor(protected router: Router) {
     }
 
-    go(idx: number) : void {
+    go(idx: number): void {
         Session.remove('errorMessage');
         window.location.href = this.steps[idx];
     }

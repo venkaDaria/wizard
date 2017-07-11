@@ -12,6 +12,12 @@ import {CanActivateTeam} from "./security/activate";
 const appRoutes: Routes = [
     {path: '', redirectTo: 'step1', canActivate: [CanActivateTeam], pathMatch: 'full'},
 
+    {path: 'step1/', redirectTo: 'step1', canActivate: [CanActivateTeam], pathMatch: 'full'},
+    {path: 'step2/', redirectTo: 'step2', canActivate: [CanActivateTeam], pathMatch: 'full'},
+    {path: 'step3/', redirectTo: 'step3', canActivate: [CanActivateTeam], pathMatch: 'full'},
+    {path: 'step4/', redirectTo: 'step4', canActivate: [CanActivateTeam], pathMatch: 'full'},
+    {path: 'final/', redirectTo: 'final', canActivate: [CanActivateTeam], pathMatch: 'full'},
+
     {
         path: 'step1', canActivate: [CanActivateTeam], children: [
         {path: '', component: NavComponent, outlet: 'nav', canActivate: [CanActivateTeam], pathMatch: 'full'},

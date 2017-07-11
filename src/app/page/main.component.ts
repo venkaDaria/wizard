@@ -2,6 +2,7 @@ import {Session} from "../util/session";
 import {Component, Injectable} from "@angular/core";
 import {ValidationService} from "../service/wizard.service";
 import {BaseComponent} from "./base.component";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'step-main',
@@ -9,8 +10,8 @@ import {BaseComponent} from "./base.component";
 })
 @Injectable()
 export class MainComponent extends BaseComponent {
-    constructor(private service: ValidationService) {
-        super();
+    constructor(private service: ValidationService, protected router: Router) {
+        super(router);
     }
 
     goNext(idx: number, value: string): void {
@@ -24,12 +25,18 @@ export class MainComponent extends BaseComponent {
                 }
                 else {
                     Session.set(this.params[idx], value);
+
+                    /*
+                    this.router.navigateByUrl(this.steps[idx])
+                        .then((success: any) => console.log('Go to ' + this.steps[idx]))
+                        .catch((err: any) => console.error(err));;
+                    */
+
                     window.location.href = this.steps[idx];
                 }
                 Session.remove('loading');
             })
             .catch(MainComponent.handleError);
-
     }
 
     getValue(key: any): string {

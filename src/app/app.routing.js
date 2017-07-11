@@ -11,6 +11,11 @@ var main_component_1 = require("./page/main.component");
 var activate_1 = require("./security/activate");
 var appRoutes = [
     { path: '', redirectTo: 'step1', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+    { path: 'step1/', redirectTo: 'step1', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+    { path: 'step2/', redirectTo: 'step2', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+    { path: 'step3/', redirectTo: 'step3', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+    { path: 'step4/', redirectTo: 'step4', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+    { path: 'final/', redirectTo: 'final', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
     {
         path: 'step1', canActivate: [activate_1.CanActivateTeam], children: [
             { path: '', component: nav_component_1.NavComponent, outlet: 'nav', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
