@@ -62,9 +62,8 @@
             </ng-template>
         </a>
     </li>
-    <li id="li5" [class.active]="url_equals('/final')" [class.disabled]="!has_value('param2')
-            || !has_value('param3') || !has_value('param4')" title="Final">
-        <a (click)="!has_value('param2') || !has_value('param3') || !has_value('param4') || go('/final')">
+    <li id="li5" [class.active]="url_equals('/final')" [class.disabled]="!has_value('param4')" title="Final">
+        <a (click)="!has_value('param4') || go('/final')">
             <span class="fa-stack fa-lg">
                 <i class="fa fa-circle-o fa-stack-2x"></i>
             </span>

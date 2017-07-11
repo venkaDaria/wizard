@@ -63,22 +63,6 @@ var MainComponent = (function (_super) {
     };
     return MainComponent;
 }(nav_component_1.NavComponentBase));
-__decorate([
-    core_1.ViewChild('param1'),
-    __metadata("design:type", Object)
-], MainComponent.prototype, "param1", void 0);
-__decorate([
-    core_1.ViewChild('param2'),
-    __metadata("design:type", Object)
-], MainComponent.prototype, "param2", void 0);
-__decorate([
-    core_1.ViewChild('param3'),
-    __metadata("design:type", Object)
-], MainComponent.prototype, "param3", void 0);
-__decorate([
-    core_1.ViewChild('param4'),
-    __metadata("design:type", Object)
-], MainComponent.prototype, "param4", void 0);
 MainComponent = __decorate([
     core_1.Component({
         selector: 'step-main',

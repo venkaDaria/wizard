@@ -9,12 +9,6 @@ import {NavComponentBase} from "./nav.component";
 })
 @Injectable()
 export class MainComponent extends NavComponentBase {
-
-    @ViewChild('param1') param1: any;
-    @ViewChild('param2') param2: any;
-    @ViewChild('param3') param3: any;
-    @ViewChild('param4') param4: any;
-
     constructor(private service: ValidationService) {
         super();
     }
