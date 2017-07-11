@@ -17,8 +17,8 @@ var BaseComponent = (function () {
         session_1.Session.remove('errorMessage');
         window.location.href = this.steps[idx];
     };
-    BaseComponent.prototype.hasValue = function (idx) {
-        return session_1.Session.has(this.params[idx]);
+    BaseComponent.prototype.hasValue = function (key) {
+        return session_1.Session.has(this.params[key]);
     };
     return BaseComponent;
 }());

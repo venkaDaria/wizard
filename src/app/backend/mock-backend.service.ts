@@ -10,7 +10,7 @@ export class MockBackendService {
     constructor(private backend: MockBackend, private router: Router) {
     }
 
-    private delay(ms: number) {
+    private delay(ms: number): Promise<any> {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 

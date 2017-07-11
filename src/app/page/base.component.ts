@@ -15,12 +15,12 @@ export class BaseComponent {
     constructor() {
     }
 
-    go(idx: number) {
+    go(idx: number) : void {
         Session.remove('errorMessage');
         window.location.href = this.steps[idx];
     }
 
-    hasValue(idx: number): boolean {
-        return Session.has(this.params[idx]);
+    hasValue(key: any): boolean {
+        return Session.has(this.params[key]);
     }
 }

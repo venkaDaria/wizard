@@ -28,12 +28,12 @@ export class MainComponent extends BaseComponent {
                 }
                 Session.remove('loading');
             })
-            .catch(this.handleError);
+            .catch(MainComponent.handleError);
 
     }
 
-    getValue(idx: number): string {
-        return Session.get(this.params[idx]);
+    getValue(key: any): string {
+        return Session.get(this.params[key]);
     }
 
     clear(): void {
@@ -41,7 +41,7 @@ export class MainComponent extends BaseComponent {
         window.location.href = '/';
     }
 
-    private handleError(error: any): Promise<any> {
+    private static handleError(error: any): Promise<any> {
         console.error('An error occured', error);
         Session.remove('loading');
 

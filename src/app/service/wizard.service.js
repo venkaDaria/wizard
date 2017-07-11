@@ -23,11 +23,7 @@ var ValidationService = (function () {
         }))
             .toPromise()
             .then(function (response) { return response.json(); })
-            .catch(this.handleError);
-    };
-    ValidationService.prototype.handleError = function (error) {
-        console.error('An error occured', error);
-        return Promise.reject(error.message || error);
+            .catch(function (err) { return console.error(err); });
     };
     return ValidationService;
 }());

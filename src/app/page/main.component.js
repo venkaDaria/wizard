@@ -23,7 +23,7 @@ var session_1 = require("../util/session");
 var core_1 = require("@angular/core");
 var wizard_service_1 = require("../service/wizard.service");
 var base_component_1 = require("./base.component");
-var MainComponent = (function (_super) {
+var MainComponent = MainComponent_1 = (function (_super) {
     __extends(MainComponent, _super);
     function MainComponent(service) {
         var _this = _super.call(this) || this;
@@ -45,23 +45,23 @@ var MainComponent = (function (_super) {
             }
             session_1.Session.remove('loading');
         })
-            .catch(this.handleError);
+            .catch(MainComponent_1.handleError);
     };
-    MainComponent.prototype.getValue = function (idx) {
-        return session_1.Session.get(this.params[idx]);
+    MainComponent.prototype.getValue = function (key) {
+        return session_1.Session.get(this.params[key]);
     };
     MainComponent.prototype.clear = function () {
         session_1.Session.clear();
         window.location.href = '/';
     };
-    MainComponent.prototype.handleError = function (error) {
+    MainComponent.handleError = function (error) {
         console.error('An error occured', error);
         session_1.Session.remove('loading');
         return Promise.reject(error.message || error);
     };
     return MainComponent;
 }(base_component_1.BaseComponent));
-MainComponent = __decorate([
+MainComponent = MainComponent_1 = __decorate([
     core_1.Component({
         selector: 'step-main',
         templateUrl: 'templates/page/main.html'
@@ -70,4 +70,5 @@ MainComponent = __decorate([
     __metadata("design:paramtypes", [wizard_service_1.ValidationService])
 ], MainComponent);
 exports.MainComponent = MainComponent;
+var MainComponent_1;
 //# sourceMappingURL=main.component.js.map
