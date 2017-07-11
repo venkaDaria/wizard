@@ -26,13 +26,9 @@ export class MainComponent extends BaseComponent {
                 else {
                     Session.set(this.params[idx], value);
 
-                    /*
                     this.router.navigateByUrl(this.steps[idx])
                         .then((success: any) => console.log('Go to ' + this.steps[idx]))
-                        .catch((err: any) => console.error(err));;
-                    */
-
-                    window.location.href = this.steps[idx];
+                        .catch((err: any) => console.error(err));
                 }
                 Session.remove('loading');
             })
@@ -45,7 +41,10 @@ export class MainComponent extends BaseComponent {
 
     clear(): void {
         Session.clear();
-        window.location.href = '/';
+
+        this.router.navigateByUrl('/')
+            .then((success: any) => console.log('Go to first page'))
+            .catch((err: any) => console.error(err));
     }
 
     private static handleError(error: any): Promise<any> {

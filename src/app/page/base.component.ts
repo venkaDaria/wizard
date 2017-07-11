@@ -20,7 +20,10 @@ export abstract class BaseComponent {
 
     go(idx: number): void {
         Session.remove('errorMessage');
-        window.location.href = this.steps[idx];
+
+        this.router.navigateByUrl(this.steps[idx])
+            .then((success: any) => console.log('Go to ' + this.steps[idx]))
+            .catch((err: any) => console.error(err));
     }
 
     hasValue(key: any): boolean {

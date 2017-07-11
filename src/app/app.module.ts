@@ -12,7 +12,6 @@ import {MainComponent} from "./page/main.component";
 import {MockBackend} from "@angular/http/testing";
 import {ValidationService} from "./service/wizard.service";
 import {BaseRequestOptions, Http, HttpModule} from "@angular/http";
-import {CanActivateTeam, Permissions, UserToken} from "./security/activate";
 import {BrowserModule} from "@angular/platform-browser";
 import {routing} from "./app.routing";
 import {FormsModule} from "@angular/forms";
@@ -25,9 +24,6 @@ import {FormsModule} from "@angular/forms";
         MainComponent4, FooterComponent4, FinalMainComponent, FinalFooterComponent
     ],
     providers: [
-        CanActivateTeam,
-        UserToken,
-        Permissions,
         ValidationService,
         MockBackend,
         BaseRequestOptions,

@@ -19,7 +19,6 @@ var main_component_1 = require("./page/main.component");
 var testing_1 = require("@angular/http/testing");
 var wizard_service_1 = require("./service/wizard.service");
 var http_1 = require("@angular/http");
-var activate_1 = require("./security/activate");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_routing_1 = require("./app.routing");
 var forms_1 = require("@angular/forms");
@@ -37,9 +36,6 @@ AppModule = __decorate([
             step4_component_1.MainComponent4, step4_component_1.FooterComponent4, final_component_1.FinalMainComponent, final_component_1.FinalFooterComponent
         ],
         providers: [
-            activate_1.CanActivateTeam,
-            activate_1.UserToken,
-            activate_1.Permissions,
             wizard_service_1.ValidationService,
             testing_1.MockBackend,
             http_1.BaseRequestOptions,

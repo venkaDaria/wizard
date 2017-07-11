@@ -8,79 +8,61 @@ var step4_component_1 = require("./step/step4.component");
 var final_component_1 = require("./step/final.component");
 var nav_component_1 = require("./page/nav.component");
 var main_component_1 = require("./page/main.component");
-var activate_1 = require("./security/activate");
 var appRoutes = [
-    { path: '', redirectTo: 'step1', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
-    { path: 'step1/', redirectTo: 'step1', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
-    { path: 'step2/', redirectTo: 'step2', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
-    { path: 'step3/', redirectTo: 'step3', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
-    { path: 'step4/', redirectTo: 'step4', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
-    { path: 'final/', redirectTo: 'final', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+    { path: '', redirectTo: 'step1', pathMatch: 'full' },
     {
-        path: 'step1', canActivate: [activate_1.CanActivateTeam], children: [
-            { path: '', component: nav_component_1.NavComponent, outlet: 'nav', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+        path: 'step1', children: [
+            { path: '', component: nav_component_1.NavComponent, outlet: 'nav', pathMatch: 'full' },
             {
-                path: '', component: main_component_1.MainComponent, outlet: 'main', canActivate: [activate_1.CanActivateTeam], children: [
-                    { path: '', component: step1_component_1.MainComponent1, outlet: 'step', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+                path: '', component: main_component_1.MainComponent, children: [
+                    { path: '', component: step1_component_1.MainComponent1, pathMatch: 'full' },
                 ]
             },
-            { path: '', component: step1_component_1.FooterComponent1, outlet: 'footer', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+            { path: '', component: step1_component_1.FooterComponent1, outlet: 'footer', pathMatch: 'full' },
         ]
     },
     {
-        path: 'step2', canActivate: [activate_1.CanActivateTeam], children: [
-            { path: '', component: nav_component_1.NavComponent, outlet: 'nav', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+        path: 'step2', children: [
+            { path: '', component: nav_component_1.NavComponent, outlet: 'nav', pathMatch: 'full' },
             {
-                path: '', component: main_component_1.MainComponent, outlet: 'main', canActivate: [activate_1.CanActivateTeam], children: [
-                    { path: '', component: step2_component_1.MainComponent2, outlet: 'step', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+                path: '', component: main_component_1.MainComponent, children: [
+                    { path: '', component: step2_component_1.MainComponent2, pathMatch: 'full' },
                 ]
             },
-            { path: '', component: step2_component_1.FooterComponent2, outlet: 'footer', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+            { path: '', component: step2_component_1.FooterComponent2, outlet: 'footer', pathMatch: 'full' },
         ]
     },
     {
-        path: 'step3', canActivate: [activate_1.CanActivateTeam], children: [
-            { path: '', component: nav_component_1.NavComponent, outlet: 'nav', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+        path: 'step3', children: [
+            { path: '', component: nav_component_1.NavComponent, outlet: 'nav', pathMatch: 'full' },
             {
-                path: '', component: main_component_1.MainComponent, outlet: 'main', canActivate: [activate_1.CanActivateTeam], children: [
-                    { path: '', component: step3_component_1.MainComponent3, outlet: 'step', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+                path: '', component: main_component_1.MainComponent, children: [
+                    { path: '', component: step3_component_1.MainComponent3, pathMatch: 'full' },
                 ]
             },
-            { path: '', component: step3_component_1.FooterComponent3, outlet: 'footer', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+            { path: '', component: step3_component_1.FooterComponent3, outlet: 'footer', pathMatch: 'full' },
         ]
     },
     {
-        path: 'step4', canActivate: [activate_1.CanActivateTeam], children: [
-            { path: '', component: nav_component_1.NavComponent, outlet: 'nav', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+        path: 'step4', children: [
+            { path: '', component: nav_component_1.NavComponent, outlet: 'nav', pathMatch: 'full' },
             {
-                path: '', component: main_component_1.MainComponent, outlet: 'main', canActivate: [activate_1.CanActivateTeam], children: [
-                    { path: '', component: step4_component_1.MainComponent4, outlet: 'step', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+                path: '', component: main_component_1.MainComponent, children: [
+                    { path: '', component: step4_component_1.MainComponent4, pathMatch: 'full' },
                 ]
             },
-            { path: '', component: step4_component_1.FooterComponent4, outlet: 'footer', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+            { path: '', component: step4_component_1.FooterComponent4, outlet: 'footer', pathMatch: 'full' },
         ]
     },
     {
-        path: 'final', canActivate: [activate_1.CanActivateTeam], children: [
-            { path: '', component: nav_component_1.NavComponent, outlet: 'nav', canActivate: [activate_1.CanActivateTeam], pathMatch: 'full' },
+        path: 'final', children: [
+            { path: '', component: nav_component_1.NavComponent, outlet: 'nav', pathMatch: 'full' },
             {
-                path: '', component: main_component_1.MainComponent, outlet: 'main', canActivate: [activate_1.CanActivateTeam], children: [
-                    {
-                        path: '',
-                        component: final_component_1.FinalMainComponent,
-                        outlet: 'step',
-                        canActivate: [activate_1.CanActivateTeam],
-                        pathMatch: 'full'
-                    },
+                path: '', component: main_component_1.MainComponent, children: [
+                    { path: '', component: final_component_1.FinalMainComponent, pathMatch: 'full' },
                 ]
             },
-            {
-                path: '',
-                component: final_component_1.FinalFooterComponent,
-                outlet: 'footer',
-                canActivate: [activate_1.CanActivateTeam],
-                pathMatch: 'full'
-            },
+            { path: '', component: final_component_1.FinalFooterComponent, outlet: 'footer', pathMatch: 'full' },
         ]
     },
 ];

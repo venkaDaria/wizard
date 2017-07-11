@@ -26,8 +26,11 @@ var BaseComponent = (function () {
         };
     }
     BaseComponent.prototype.go = function (idx) {
+        var _this = this;
         session_1.Session.remove('errorMessage');
-        window.location.href = this.steps[idx];
+        this.router.navigateByUrl(this.steps[idx])
+            .then(function (success) { return console.log('Go to ' + _this.steps[idx]); })
+            .catch(function (err) { return console.error(err); });
     };
     BaseComponent.prototype.hasValue = function (key) {
         return session_1.Session.has(this.params[key]);

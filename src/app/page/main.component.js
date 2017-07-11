@@ -43,12 +43,9 @@ var MainComponent = MainComponent_1 = (function (_super) {
             }
             else {
                 session_1.Session.set(_this.params[idx], value);
-                /*
-                this.router.navigateByUrl(this.steps[idx])
-                    .then((success: any) => console.log('Go to ' + this.steps[idx]))
-                    .catch((err: any) => console.error(err));;
-                */
-                window.location.href = _this.steps[idx];
+                _this.router.navigateByUrl(_this.steps[idx])
+                    .then(function (success) { return console.log('Go to ' + _this.steps[idx]); })
+                    .catch(function (err) { return console.error(err); });
             }
             session_1.Session.remove('loading');
         })
@@ -59,7 +56,9 @@ var MainComponent = MainComponent_1 = (function (_super) {
     };
     MainComponent.prototype.clear = function () {
         session_1.Session.clear();
-        window.location.href = '/';
+        this.router.navigateByUrl('/')
+            .then(function (success) { return console.log('Go to first page'); })
+            .catch(function (err) { return console.error(err); });
     };
     MainComponent.handleError = function (error) {
         console.error('An error occured', error);
