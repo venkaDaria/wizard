@@ -8,16 +8,16 @@ export class ValidationService {
     constructor(private http: Http) {
     }
 
-    is_valid(key: string, value: string): Promise<string> {
+    isValid(key: string, value: string): Promise<string> {
         return this.http.get(MockBackendService.url + key, new RequestOptions({
             params: {param: value}
         }))
             .toPromise()
             .then(response => response.json())
-            .catch(this.handle_error);
+            .catch(this.handleError);
     }
 
-    private handle_error(error: any): Promise<any> {
+    private handleError(error: any): Promise<any> {
         console.error('An error occured', error);
         return Promise.reject(error.message || error);
     }

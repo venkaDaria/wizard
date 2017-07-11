@@ -3,13 +3,15 @@
         <router-outlet name="step"></router-outlet>
         <br/>
 
-        <ng-template [ngIf]="has_value('errorMessage')">
+        <ng-template [ngIf]="hasValue('errorMessage')">
             <div class="alert alert-danger">
-                <strong>Error!</strong> <p>{{get_value('errorMessage')}}<p>
+                <strong>Error!</strong>
+                <p>{{getValue('errorMessage')}}
+                <p>
             </div>
         </ng-template>
 
-        <ng-template [ngIf]="get_value('loading')">
+        <ng-template [ngIf]="getValue('loading')">
             <i class="fa fa-spinner fa-pulse fa-5x"></i>
         </ng-template>
     </div>

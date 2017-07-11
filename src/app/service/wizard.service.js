@@ -17,15 +17,15 @@ var ValidationService = (function () {
     function ValidationService(http) {
         this.http = http;
     }
-    ValidationService.prototype.is_valid = function (key, value) {
+    ValidationService.prototype.isValid = function (key, value) {
         return this.http.get(mock_backend_service_1.MockBackendService.url + key, new http_1.RequestOptions({
             params: { param: value }
         }))
             .toPromise()
             .then(function (response) { return response.json(); })
-            .catch(this.handle_error);
+            .catch(this.handleError);
     };
-    ValidationService.prototype.handle_error = function (error) {
+    ValidationService.prototype.handleError = function (error) {
         console.error('An error occured', error);
         return Promise.reject(error.message || error);
     };

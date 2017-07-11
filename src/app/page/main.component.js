@@ -22,7 +22,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var session_1 = require("../util/session");
 var core_1 = require("@angular/core");
 var wizard_service_1 = require("../service/wizard.service");
-var nav_component_1 = require("./nav.component");
+var base_component_1 = require("./base.component");
 var MainComponent = (function (_super) {
     __extends(MainComponent, _super);
     function MainComponent(service) {
@@ -30,11 +30,11 @@ var MainComponent = (function (_super) {
         _this.service = service;
         return _this;
     }
-    MainComponent.prototype.go_next = function (idx, value) {
+    MainComponent.prototype.goNext = function (idx, value) {
         var _this = this;
         session_1.Session.set('loading', true);
         session_1.Session.remove('errorMessage');
-        this.service.is_valid(this.params[idx], value)
+        this.service.isValid(this.params[idx], value)
             .then(function (answer) {
             if (answer['errorMessage']) {
                 session_1.Session.set('errorMessage', answer['errorMessage']);
@@ -45,22 +45,22 @@ var MainComponent = (function (_super) {
             }
             session_1.Session.remove('loading');
         })
-            .catch(this.handle_error);
+            .catch(this.handleError);
     };
-    MainComponent.prototype.get_value = function (idx) {
+    MainComponent.prototype.getValue = function (idx) {
         return session_1.Session.get(this.params[idx]);
     };
     MainComponent.prototype.clear = function () {
         session_1.Session.clear();
         window.location.href = '/';
     };
-    MainComponent.prototype.handle_error = function (error) {
+    MainComponent.prototype.handleError = function (error) {
         console.error('An error occured', error);
         session_1.Session.remove('loading');
         return Promise.reject(error.message || error);
     };
     return MainComponent;
-}(nav_component_1.NavComponentBase));
+}(base_component_1.BaseComponent));
 MainComponent = __decorate([
     core_1.Component({
         selector: 'step-main',

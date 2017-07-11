@@ -19,31 +19,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var session_1 = require("../util/session");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var NavComponentBase = (function () {
-    function NavComponentBase() {
-        this.steps = ["/step1", "/step2", "/step3", "/step4", "/final"];
-        this.params = {
-            1: 'param1',
-            2: 'param2',
-            3: 'param3',
-            4: 'param4',
-            errorMessage: 'errorMessage',
-            loading: 'loading'
-        };
-    }
-    NavComponentBase.prototype.go = function (idx) {
-        session_1.Session.remove('errorMessage');
-        window.location.href = this.steps[idx];
-    };
-    NavComponentBase.prototype.has_value = function (idx) {
-        return session_1.Session.has(this.params[idx]);
-    };
-    return NavComponentBase;
-}());
-exports.NavComponentBase = NavComponentBase;
+var base_component_1 = require("./base.component");
 var NavComponent = (function (_super) {
     __extends(NavComponent, _super);
     function NavComponent(router) {
@@ -51,11 +29,11 @@ var NavComponent = (function (_super) {
         _this.router = router;
         return _this;
     }
-    NavComponent.prototype.url_equals = function (idx) {
+    NavComponent.prototype.urlEquals = function (idx) {
         return this.router.url === this.steps[idx];
     };
     return NavComponent;
-}(NavComponentBase));
+}(base_component_1.BaseComponent));
 NavComponent = __decorate([
     core_1.Component({
         selector: 'step-nav',

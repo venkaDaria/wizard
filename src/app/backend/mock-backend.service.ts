@@ -13,7 +13,7 @@ export class MockBackendService {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    start(ms: number) : void {
+    start(ms: number): void {
         console.log('MockBackendService start');
         this.backend.connections.subscribe((c: MockConnection) => {
             this.delay(ms).then(() => {
@@ -37,7 +37,6 @@ export class MockBackendService {
                         if (parsedUrl.param.length < 5) {
                             answer['errorMessage'] = 'Param3 must be at least 5';
                         }
-                        console.log()
                         if (!parsedUrl.param.match('^\\d+$')) {
                             let msg = 'Param3 must contain only digits';
                             answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '. ' + msg;
