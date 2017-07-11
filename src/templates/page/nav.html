@@ -16,7 +16,7 @@
     </li>
     <li id="li2" [class.active]="url_equals('/step2')" [class.disabled]="!has_value('param1')"
             [class.bg-success]="has_value('param2')" title="Step 2">
-        <a (click)="go('/step2')">
+        <a (click)="!has_value('param1') || go('/step2')">
             <div *ngIf="has_value('param2'); else elseBlock2">
                 <span class="fa-stack fa-lg">
                     <i class="fa fa-check-circle fa-stack-2x"></i>
@@ -32,7 +32,7 @@
     </li>
     <li id="li3" [class.active]="url_equals('/step3')" [class.disabled]="!has_value('param2')"
             [class.bg-success]="has_value('param3')" title="Step 3">
-        <a (click)="go('/step3')">
+        <a (click)="!has_value('param2') || go('/step3')">
             <div *ngIf="has_value('param3'); else elseBlock3">
                 <span class="fa-stack fa-lg">
                     <i class="fa fa-check-circle fa-stack-2x"></i>
@@ -48,7 +48,7 @@
     </li>
     <li id="li4" [class.active]="url_equals('/step4')" [class.disabled]="!has_value('param3')"
             [class.bg-success]="has_value('param4')" title="Step 4">
-        <a (click)="go('/step4')">
+        <a (click)="!has_value('param3') || go('/step4')">
             <div *ngIf="has_value('param4'); else elseBlock4">
                <span class="fa-stack fa-lg">
                     <i class="fa fa-check-circle fa-stack-2x"></i>
@@ -64,7 +64,7 @@
     </li>
     <li id="li5" [class.active]="url_equals('/final')" [class.disabled]="!has_value('param2')
             || !has_value('param3') || !has_value('param4')" title="Final">
-        <a (click)="go('/final')">
+        <a (click)="!has_value('param2') || !has_value('param3') || !has_value('param4') || go('/final')">
             <span class="fa-stack fa-lg">
                 <i class="fa fa-circle-o fa-stack-2x"></i>
             </span>

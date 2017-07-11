@@ -1,9 +1,8 @@
+/* sticky footer */
+
 html, body {
-    margin: 0;
     height: 100%;
 }
-
-/* sticky footer */
 
 footer {
     height: 10%;
@@ -11,10 +10,4 @@ footer {
 
 .app {
     min-height: 90%;
-}
-
-/* disable links */
-
-.disabled a {
-    pointer-events: none;
 }
