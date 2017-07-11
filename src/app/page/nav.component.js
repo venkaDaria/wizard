@@ -40,6 +40,7 @@ var NavComponent = (function (_super) {
     function NavComponent(router) {
         var _this = _super.call(this) || this;
         _this.router = router;
+        _this.steps = ["/step1", "/step2", "/step3", "/step4", "/final"];
         return _this;
     }
     NavComponent.prototype.url_equals = function (url) {

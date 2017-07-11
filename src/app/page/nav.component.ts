@@ -22,6 +22,9 @@ export class NavComponentBase {
 })
 @Injectable()
 export class NavComponent extends NavComponentBase {
+
+    steps = ["/step1", "/step2", "/step3", "/step4", "/final"];
+
     constructor(private router: Router) {
         super();
     }

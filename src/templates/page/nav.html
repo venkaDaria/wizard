@@ -1,72 +1,31 @@
 <ul class="nav nav-pills nav-justified thumbnail">
-    <li id="li1" [class.active]="url_equals('/step1')" [class.bg-success]="has_value('param1')" title="Step 1">
-        <a (click)="go('/step1')">
-            <div *ngIf="has_value('param1'); else elseBlock">
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-check-circle fa-stack-2x"></i>
-                </span>
-            </div>
+    <ng-template ngFor let-step [ngForOf]="steps" let-i="index">
+        <li id="li{{i}}" [class.active]="url_equals(step)" [class.disabled]="i != 0 && !has_value('param' + i)"
+                [class.bg-success]="has_value('param' + (i + 1))" title="Step {{i}}">
+
+            <a (click)="i != 0 && !has_value('param' + i) || go(step)">
+                <div *ngIf="i < steps.length - 1; else finalBlock">
+                    <div *ngIf="has_value('param' + (i + 1)); else elseBlock">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-check-circle fa-stack-2x"></i>
+                        </span>
+                    </div>
+                </div>
+            </a>
+
             <ng-template #elseBlock>
                 <span class="fa-stack fa-lg">
                     <i class="fa fa-circle-thin fa-stack-2x"></i>
-                    <strong class="fa-stack-lg">1</strong>
+                    <strong class="fa-stack-lg">{{i + 1}}</strong>
                 </span>
             </ng-template>
-        </a>
-    </li>
-    <li id="li2" [class.active]="url_equals('/step2')" [class.disabled]="!has_value('param1')"
-            [class.bg-success]="has_value('param2')" title="Step 2">
-        <a (click)="!has_value('param1') || go('/step2')">
-            <div *ngIf="has_value('param2'); else elseBlock2">
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-check-circle fa-stack-2x"></i>
-                </span>
-            </div>
-            <ng-template #elseBlock2>
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle-thin fa-stack-2x"></i>
-                    <strong class="fa-stack-lg">2</strong>
-                </span>
-            </ng-template>
-        </a>
-    </li>
-    <li id="li3" [class.active]="url_equals('/step3')" [class.disabled]="!has_value('param2')"
-            [class.bg-success]="has_value('param3')" title="Step 3">
-        <a (click)="!has_value('param2') || go('/step3')">
-            <div *ngIf="has_value('param3'); else elseBlock3">
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-check-circle fa-stack-2x"></i>
-                </span>
-            </div>
-            <ng-template #elseBlock3>
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle-thin fa-stack-2x"></i>
-                    <strong class="fa-stack-lg">3</strong>
-                </span>
-            </ng-template>
-        </a>
-    </li>
-    <li id="li4" [class.active]="url_equals('/step4')" [class.disabled]="!has_value('param3')"
-            [class.bg-success]="has_value('param4')" title="Step 4">
-        <a (click)="!has_value('param3') || go('/step4')">
-            <div *ngIf="has_value('param4'); else elseBlock4">
-               <span class="fa-stack fa-lg">
-                    <i class="fa fa-check-circle fa-stack-2x"></i>
-                </span>
-            </div>
-            <ng-template #elseBlock4>
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle-thin fa-stack-2x"></i>
-                    <strong class="fa-stack-lg">4</strong>
-                </span>
-            </ng-template>
-        </a>
-    </li>
-    <li id="li5" [class.active]="url_equals('/final')" [class.disabled]="!has_value('param4')" title="Final">
-        <a (click)="!has_value('param4') || go('/final')">
-            <span class="fa-stack fa-lg">
+
+        </li>
+    </ng-template>
+
+    <ng-template #finalBlock>
+         <span class="fa-stack fa-lg">
                 <i class="fa fa-circle-o fa-stack-2x"></i>
-            </span>
-        </a>
-    </li>
+         </span>
+    </ng-template>
 </ul>
