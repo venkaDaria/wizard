@@ -22,7 +22,7 @@ const appRoutes: Routes = [
         {path: '', component: FooterComponent1, outlet: 'footer', pathMatch: 'full'},
     ]
     },
-    
+
     {
         path: 'step2', children: [
         {path: '', component: NavComponent, outlet: 'nav', pathMatch: 'full'},
