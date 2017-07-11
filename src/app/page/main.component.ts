@@ -13,18 +13,18 @@ export class MainComponent extends NavComponentBase {
         super();
     }
 
-    go_next(url: string, key: string, value: string): void {
+    go_next(idx: number, value: string): void {
         Session.set('loading', true);
         Session.remove('errorMessage');
 
-        this.service.is_valid(key, value)
+        this.service.is_valid(this.params[idx], value)
             .then(answer => {
                 if (answer['errorMessage']) {
                     Session.set('errorMessage', answer['errorMessage']);
                 }
                 else {
-                    Session.set(key, value);
-                    window.location.href = url;
+                    Session.set(this.params[idx], value);
+                    window.location.href = this.steps[idx];
                 }
                 Session.remove('loading');
             })
@@ -32,12 +32,8 @@ export class MainComponent extends NavComponentBase {
 
     }
 
-    get_value(key: string): string {
-        return Session.get(key);
-    }
-
-    has_value(key: string): boolean {
-        return Session.has(key);
+    get_value(idx: number): string {
+        return Session.get(this.params[idx]);
     }
 
     clear(): void {

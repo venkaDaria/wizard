@@ -24,13 +24,22 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var NavComponentBase = (function () {
     function NavComponentBase() {
+        this.steps = ["/step1", "/step2", "/step3", "/step4", "/final"];
+        this.params = {
+            1: 'param1',
+            2: 'param2',
+            3: 'param3',
+            4: 'param4',
+            errorMessage: 'errorMessage',
+            loading: 'loading'
+        };
     }
     NavComponentBase.prototype.go = function (url) {
         session_1.Session.remove('errorMessage');
         window.location.href = url;
     };
-    NavComponentBase.prototype.has_value = function (key) {
-        return session_1.Session.has(key);
+    NavComponentBase.prototype.has_value = function (idx) {
+        return session_1.Session.has(this.params[idx]);
     };
     return NavComponentBase;
 }());
@@ -40,7 +49,6 @@ var NavComponent = (function (_super) {
     function NavComponent(router) {
         var _this = _super.call(this) || this;
         _this.router = router;
-        _this.steps = ["/step1", "/step2", "/step3", "/step4", "/final"];
         return _this;
     }
     NavComponent.prototype.url_equals = function (url) {

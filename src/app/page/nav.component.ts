@@ -3,6 +3,17 @@ import {Component, Injectable} from "@angular/core";
 import {Router} from "@angular/router";
 
 export class NavComponentBase {
+    protected steps = ["/step1", "/step2", "/step3", "/step4", "/final"];
+
+    protected params = {
+        1: 'param1',
+        2: 'param2',
+        3: 'param3',
+        4: 'param4',
+        errorMessage: 'errorMessage',
+        loading: 'loading'
+    };
+
     constructor() {
     }
 
@@ -11,8 +22,8 @@ export class NavComponentBase {
         window.location.href = url;
     }
 
-    has_value(key: string): boolean {
-        return Session.has(key);
+    has_value(idx: number): boolean {
+        return Session.has(this.params[idx]);
     }
 }
 
@@ -22,9 +33,6 @@ export class NavComponentBase {
 })
 @Injectable()
 export class NavComponent extends NavComponentBase {
-
-    steps = ["/step1", "/step2", "/step3", "/step4", "/final"];
-
     constructor(private router: Router) {
         super();
     }

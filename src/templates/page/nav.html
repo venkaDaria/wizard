@@ -1,11 +1,11 @@
 <ul class="nav nav-pills nav-justified thumbnail">
     <ng-template ngFor let-step [ngForOf]="steps" let-i="index">
-        <li id="li{{i}}" [class.active]="url_equals(step)" [class.disabled]="i != 0 && !has_value('param' + i)"
-                [class.bg-success]="has_value('param' + (i + 1))" title="Step {{i}}">
+        <li id="li{{i}}" [class.active]="url_equals(step)" [class.disabled]="i != 0 && !has_value(i)"
+                [class.bg-success]="has_value(i + 1)" title="Step {{i + 1}}">
 
-            <a (click)="i != 0 && !has_value('param' + i) || go(step)">
+            <a (click)="i != 0 && !has_value(i) || go(step)">
                 <div *ngIf="i < steps.length - 1; else finalBlock">
-                    <div *ngIf="has_value('param' + (i + 1)); else elseBlock">
+                    <div *ngIf="has_value(i + 1); else elseBlock">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-check-circle fa-stack-2x"></i>
                         </span>

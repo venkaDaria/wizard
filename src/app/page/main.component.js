@@ -30,27 +30,25 @@ var MainComponent = (function (_super) {
         _this.service = service;
         return _this;
     }
-    MainComponent.prototype.go_next = function (url, key, value) {
+    MainComponent.prototype.go_next = function (idx, value) {
+        var _this = this;
         session_1.Session.set('loading', true);
         session_1.Session.remove('errorMessage');
-        this.service.is_valid(key, value)
+        this.service.is_valid(this.params[idx], value)
             .then(function (answer) {
             if (answer['errorMessage']) {
                 session_1.Session.set('errorMessage', answer['errorMessage']);
             }
             else {
-                session_1.Session.set(key, value);
-                window.location.href = url;
+                session_1.Session.set(_this.params[idx], value);
+                window.location.href = _this.steps[idx];
             }
             session_1.Session.remove('loading');
         })
             .catch(this.handle_error);
     };
-    MainComponent.prototype.get_value = function (key) {
-        return session_1.Session.get(key);
-    };
-    MainComponent.prototype.has_value = function (key) {
-        return session_1.Session.has(key);
+    MainComponent.prototype.get_value = function (idx) {
+        return session_1.Session.get(this.params[idx]);
     };
     MainComponent.prototype.clear = function () {
         session_1.Session.clear();

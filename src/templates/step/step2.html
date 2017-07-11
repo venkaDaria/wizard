@@ -1,9 +1,8 @@
 <form>
     <div class="form-group">
         <label for="param2">Param 2:</label><br/>
-        <input class="form-control" name="param2" id="param2" #param2
-               value="{{get_value('param2')}}" required/>
+        <input class="form-control" name="param2" id="param2" #param2 value="{{get_value(2)}}" required/>
     </div>
-    <a role="button" (click)="go('/step1')" class="btn btn-success"><< Prev</a>
-    <a role="button" (click)="go_next('/step3', 'param2', param2.value)" class="btn btn-success">Next >></a>
+    <a role="button" (click)="go(steps[0])" class="btn btn-success"><< Prev</a>
+    <a role="button" (click)="go_next(2, param2.value)" class="btn btn-success">Next >></a>
 </form>
