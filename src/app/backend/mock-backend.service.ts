@@ -2,27 +2,26 @@ import {Injectable} from "@angular/core";
 import {MockBackend, MockConnection} from "@angular/http/testing";
 import {Response, ResponseOptions} from "@angular/http";
 import {Router} from "@angular/router";
-import {async} from "@angular/core/testing";
 
 @Injectable()
 export class MockBackendService {
-    public static readonly URL: string = '/api/valid/';
+    static readonly URL: string = '/api/valid/';
 
-    public constructor(private backend: MockBackend, private router: Router) {
+    constructor(private backend: MockBackend, private router: Router) {
     }
 
-    public start(ms: number): void {
+    start(ms: number) {
         console.log('MockBackendService start');
 
         let router = this.router;
         this.backend.connections.subscribe(callMock);
 
-        function delay(ms: number): Promise<any> {
+        function delay(): Promise<any> {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
         async function callMock(c: MockConnection) {
-            await delay(ms);
+            await delay();
 
             console.log('mockConnection URL:: ' + c.request.url);
 

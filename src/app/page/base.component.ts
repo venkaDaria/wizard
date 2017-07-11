@@ -18,7 +18,7 @@ export abstract class BaseComponent {
     constructor(protected router: Router) {
     }
 
-    go(idx: number): void {
+    go(idx: number) {
         Session.remove('errorMessage');
 
         this.router.navigateByUrl(this.steps[idx])

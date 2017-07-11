@@ -57,7 +57,7 @@ var MockBackendService = (function () {
         console.log('MockBackendService start');
         var router = this.router;
         this.backend.connections.subscribe(callMock);
-        function delay(ms) {
+        function delay() {
             return new Promise(function (resolve) { return setTimeout(resolve, ms); });
         }
         function callMock(c) {
@@ -65,7 +65,7 @@ var MockBackendService = (function () {
                 var parsedUrl, answer, msg;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, delay(ms)];
+                        case 0: return [4 /*yield*/, delay()];
                         case 1:
                             _a.sent();
                             console.log('mockConnection URL:: ' + c.request.url);

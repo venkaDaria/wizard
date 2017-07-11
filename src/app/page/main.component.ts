@@ -14,7 +14,7 @@ export class MainComponent extends BaseComponent {
         super(router);
     }
 
-    goNext(idx: number, value: string): void {
+    goNext(idx: number, value: string) {
         Session.set('loading', true);
         Session.remove('errorMessage');
 
@@ -39,7 +39,7 @@ export class MainComponent extends BaseComponent {
         return Session.get(this.params[key]);
     }
 
-    clear(): void {
+    clear() {
         Session.clear();
 
         this.router.navigateByUrl('/')
