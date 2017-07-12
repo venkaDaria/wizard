@@ -1,4 +1,4 @@
-<form>
+<form (submit)="$event.preventDefault(); goNext(1, param1.value)">
     <div class="form-group">
         <label for="param1">Param 1:</label><br/>
         <input class="form-control" name="param1" id="param1" #param1 value="{{getValue(1)}}" required>
