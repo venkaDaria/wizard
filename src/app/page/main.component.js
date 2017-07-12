@@ -69,6 +69,7 @@ var MainComponent = (function (_super) {
     }
     MainComponent.prototype.goNext = function (idx, value) {
         var _this = this;
+        var self = this;
         goNextAsync()
             .then(function (success) { return console.log('Go to' + _this.steps[idx]); })
             .catch(function (err) { return console.error(err); });
@@ -80,15 +81,15 @@ var MainComponent = (function (_super) {
                         case 0:
                             session_1.Session.set('loading', true);
                             session_1.Session.remove('errorMessage');
-                            return [4 /*yield*/, this.service.isValid(this.params[idx], value)];
+                            return [4 /*yield*/, self.service.isValid(self.params[idx], value)];
                         case 1:
                             answer = _a.sent();
                             if (!answer['errorMessage']) return [3 /*break*/, 2];
                             session_1.Session.set('errorMessage', answer['errorMessage']);
                             return [3 /*break*/, 4];
                         case 2:
-                            session_1.Session.set(this.params[idx], value);
-                            return [4 /*yield*/, this.router.navigateByUrl(this.steps[idx])];
+                            session_1.Session.set(self.params[idx], value);
+                            return [4 /*yield*/, self.router.navigateByUrl(self.steps[idx])];
                         case 3:
                             _a.sent();
                             _a.label = 4;

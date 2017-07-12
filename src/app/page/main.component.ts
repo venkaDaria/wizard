@@ -14,6 +14,8 @@ export class MainComponent extends BaseComponent {
     }
 
     goNext(idx: number, value: string) {
+        let self = this;
+
         goNextAsync()
             .then((success: any) => console.log('Go to' + this.steps[idx]))
             .catch((err: any) => console.error(err));
@@ -22,13 +24,13 @@ export class MainComponent extends BaseComponent {
             Session.set('loading', true);
             Session.remove('errorMessage');
 
-            let answer = await this.service.isValid(this.params[idx], value);
+            let answer = await self.service.isValid(self.params[idx], value);
 
             if (answer['errorMessage']) {
                 Session.set('errorMessage', answer['errorMessage']);
             } else {
-                Session.set(this.params[idx], value);
-                await this.router.navigateByUrl(this.steps[idx]);
+                Session.set(self.params[idx], value);
+                await self.router.navigateByUrl(self.steps[idx]);
             }
 
             Session.remove('loading');
