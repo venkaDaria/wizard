@@ -5,32 +5,40 @@
     "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "lite": "lite-server",
     "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "tsc:w": "tsc -w",
+
+    "karma": "./node_modules/karma/bin/karma",
+    "test": "karma start karma.conf.js"
   },
   "dependencies": {
-    "@angular/animations": "4.2.2",
-    "@angular/common": "4.2.2",
-    "@angular/compiler": "4.2.2",
-    "@angular/compiler-cli": "4.2.2",
-    "@angular/core": "4.2.2",
-    "@angular/forms": "4.2.2",
-    "@angular/http": "4.2.2",
-    "@angular/platform-browser": "4.2.2",
-    "@angular/platform-browser-dynamic": "4.2.2",
-    "@angular/platform-server": "4.2.2",
-    "@angular/router": "4.2.2",
-    "@angular/tsc-wrapped": "4.2.2",
-    "@angular/upgrade": "4.2.2",
+    "@angular/animations": "4.2.6",
+    "@angular/common": "4.2.6",
+    "@angular/compiler": "4.2.6",
+    "@angular/compiler-cli": "4.2.6",
+    "@angular/core": "4.2.6",
+    "@angular/forms": "4.2.6",
+    "@angular/http": "4.2.6",
+    "@angular/platform-browser": "4.2.6",
+    "@angular/platform-browser-dynamic": "4.2.6",
+    "@angular/platform-server": "4.2.6",
+    "@angular/router": "4.2.6",
+    "@angular/tsc-wrapped": "4.2.6",
+    "@angular/upgrade": "4.2.6",
     "@types/jquery": "^3.2.6",
     "core-js": "2.4.1",
-    "rxjs": "5.4.0",
-    "systemjs": "0.20.14",
+    "rxjs": "5.4.2",
+    "systemjs": "0.20.15",
     "zone.js": "0.8.12"
   },
   "devDependencies": {
-    "@types/node": "7.0.31",
-    "concurrently": "3.4.0",
+    "@types/node": "8.0.10",
+    "concurrently": "3.5.0",
     "lite-server": "2.3.0",
-    "typescript": "2.4.0"
+    "typescript": "2.4.1",
+
+    "jasmine-core": "2.6.4",
+    "karma": "1.7.0",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-jasmine": "1.1.0"
   }
 }
