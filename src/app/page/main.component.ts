@@ -9,11 +9,11 @@ import {Router} from "@angular/router";
 })
 @Injectable()
 export class MainComponent extends BaseComponent {
-    constructor(private service: ValidationService, protected router: Router) {
+    constructor(protected service: ValidationService, protected router: Router) {
         super(router);
     }
 
-    async goNext(idx: number, value: string) {
+    async goNextAsync(idx: number, value: string) {
         Session.set('loading', true);
         Session.remove('errorMessage');
 
@@ -23,13 +23,16 @@ export class MainComponent extends BaseComponent {
             Session.set('errorMessage', answer['errorMessage']);
         } else {
             Session.set(this.params[idx], value);
-
-            this.router.navigateByUrl(this.steps[idx])
-                .then((success: any) => console.log('Go to ' + this.steps[idx]))
-                .catch((err: any) => console.error(err));
+            await this.router.navigateByUrl(this.steps[idx]);
         }
 
         Session.remove('loading');
+    }
+
+    goNext(idx: number, value: string) {
+        this.goNextAsync(idx, value)
+            .then((success: any) => console.log('Go to' + this.steps[idx]))
+            .catch((err: any) => console.error(err));
     }
 
     getValue(key: any): string {
