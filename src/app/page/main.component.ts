@@ -13,26 +13,26 @@ export class MainComponent extends BaseComponent {
         super(router);
     }
 
-    async goNextAsync(idx: number, value: string) {
-        Session.set('loading', true);
-        Session.remove('errorMessage');
-
-        let answer = await this.service.isValid(this.params[idx], value);
-
-        if (answer['errorMessage']) {
-            Session.set('errorMessage', answer['errorMessage']);
-        } else {
-            Session.set(this.params[idx], value);
-            await this.router.navigateByUrl(this.steps[idx]);
-        }
-
-        Session.remove('loading');
-    }
-
     goNext(idx: number, value: string) {
-        this.goNextAsync(idx, value)
+        goNextAsync()
             .then((success: any) => console.log('Go to' + this.steps[idx]))
             .catch((err: any) => console.error(err));
+
+        async function goNextAsync() {
+            Session.set('loading', true);
+            Session.remove('errorMessage');
+
+            let answer = await this.service.isValid(this.params[idx], value);
+
+            if (answer['errorMessage']) {
+                Session.set('errorMessage', answer['errorMessage']);
+            } else {
+                Session.set(this.params[idx], value);
+                await this.router.navigateByUrl(this.steps[idx]);
+            }
+
+            Session.remove('loading');
+        }
     }
 
     getValue(key: any): string {

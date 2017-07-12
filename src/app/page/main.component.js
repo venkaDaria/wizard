@@ -68,31 +68,37 @@ var MainComponent = (function (_super) {
         return _this;
     }
     MainComponent.prototype.goNext = function (idx, value) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            var answer;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        session_1.Session.set('loading', true);
-                        session_1.Session.remove('errorMessage');
-                        return [4 /*yield*/, this.service.isValid(this.params[idx], value)];
-                    case 1:
-                        answer = _a.sent();
-                        if (answer['errorMessage']) {
+        var _this = this;
+        goNextAsync()
+            .then(function (success) { return console.log('Go to' + _this.steps[idx]); })
+            .catch(function (err) { return console.error(err); });
+        function goNextAsync() {
+            return __awaiter(this, void 0, void 0, function () {
+                var answer;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            session_1.Session.set('loading', true);
+                            session_1.Session.remove('errorMessage');
+                            return [4 /*yield*/, this.service.isValid(this.params[idx], value)];
+                        case 1:
+                            answer = _a.sent();
+                            if (!answer['errorMessage']) return [3 /*break*/, 2];
                             session_1.Session.set('errorMessage', answer['errorMessage']);
-                        }
-                        else {
+                            return [3 /*break*/, 4];
+                        case 2:
                             session_1.Session.set(this.params[idx], value);
-                            this.router.navigateByUrl(this.steps[idx])
-                                .then(function (success) { return console.log('Go to ' + _this.steps[idx]); })
-                                .catch(function (err) { return console.error(err); });
-                        }
-                        session_1.Session.remove('loading');
-                        return [2 /*return*/];
-                }
+                            return [4 /*yield*/, this.router.navigateByUrl(this.steps[idx])];
+                        case 3:
+                            _a.sent();
+                            _a.label = 4;
+                        case 4:
+                            session_1.Session.remove('loading');
+                            return [2 /*return*/];
+                    }
+                });
             });
-        });
+        }
     };
     MainComponent.prototype.getValue = function (key) {
         return session_1.Session.get(this.params[key]);

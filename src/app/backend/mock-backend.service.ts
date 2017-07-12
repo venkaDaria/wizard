@@ -25,25 +25,25 @@ export class MockBackendService {
 
             console.log('mockConnection URL:: ' + c.request.url);
 
-            const parsedUrl = router.parseUrl(c.request.url).queryParams;
+            const param = router.parseUrl(c.request.url).queryParams.param;
             let answer = {};
 
             switch (router.url) {
                 case '/step1':
-                    if (parsedUrl.param.length < 7) {
+                    if (param.length < 7) {
                         answer['errorMessage'] = 'Param1 must be at least 7';
                     }
                     break;
                 case '/step2':
-                    if (parsedUrl.param !== 'hello') {
+                    if (param !== 'hello') {
                         answer['errorMessage'] = 'Param2 must be exactly "hello"';
                     }
                     break;
                 case '/step3':
-                    if (parsedUrl.param.length < 5) {
+                    if (param.length < 5) {
                         answer['errorMessage'] = 'Param3 must be at least 5';
                     }
-                    if (!parsedUrl.param.match('^\\d+$')) {
+                    if (!param.match('^\\d+$')) {
                         let msg = 'Param3 must contain only digits';
                         answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '. ' + msg;
                     }
