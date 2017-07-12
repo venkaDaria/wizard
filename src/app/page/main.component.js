@@ -110,14 +110,14 @@ var MainComponent = (function (_super) {
             .then(function (success) { return console.log('Go to first page'); })
             .catch(function (err) { return console.error(err); });
     };
+    MainComponent = __decorate([
+        core_1.Component({
+            templateUrl: 'templates/page/main.html'
+        }),
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [wizard_service_1.ValidationService, router_1.Router])
+    ], MainComponent);
     return MainComponent;
 }(base_component_1.BaseComponent));
-MainComponent = __decorate([
-    core_1.Component({
-        templateUrl: 'templates/page/main.html'
-    }),
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [wizard_service_1.ValidationService, router_1.Router])
-], MainComponent);
 exports.MainComponent = MainComponent;
 //# sourceMappingURL=main.component.js.map
