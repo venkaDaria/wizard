@@ -23,23 +23,23 @@ var MainComponent1 = (function (_super) {
     function MainComponent1() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    MainComponent1 = __decorate([
+        core_1.Component({
+            templateUrl: 'templates/step/step1.html'
+        })
+    ], MainComponent1);
     return MainComponent1;
 }(main_component_1.MainComponent));
-MainComponent1 = __decorate([
-    core_1.Component({
-        templateUrl: 'templates/step/step1.html'
-    })
-], MainComponent1);
 exports.MainComponent1 = MainComponent1;
 var FooterComponent1 = (function () {
     function FooterComponent1() {
     }
+    FooterComponent1 = __decorate([
+        core_1.Component({
+            templateUrl: 'templates/footer/step1.html'
+        })
+    ], FooterComponent1);
     return FooterComponent1;
 }());
-FooterComponent1 = __decorate([
-    core_1.Component({
-        templateUrl: 'templates/footer/step1.html'
-    })
-], FooterComponent1);
 exports.FooterComponent1 = FooterComponent1;
 //# sourceMappingURL=step1.component.js.map

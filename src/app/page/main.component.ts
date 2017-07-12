@@ -21,8 +21,7 @@ export class MainComponent extends BaseComponent {
 
         if (answer['errorMessage']) {
             Session.set('errorMessage', answer['errorMessage']);
-        }
-        else {
+        } else {
             Session.set(this.params[idx], value);
 
             this.router.navigateByUrl(this.steps[idx])
@@ -31,7 +30,6 @@ export class MainComponent extends BaseComponent {
         }
 
         Session.remove('loading');
-
     }
 
     getValue(key: any): string {

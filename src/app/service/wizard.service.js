@@ -25,11 +25,11 @@ var ValidationService = (function () {
             .then(function (response) { return response.json(); })
             .catch(function (err) { return console.error(err); });
     };
+    ValidationService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], ValidationService);
     return ValidationService;
 }());
-ValidationService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], ValidationService);
 exports.ValidationService = ValidationService;
 //# sourceMappingURL=wizard.service.js.map

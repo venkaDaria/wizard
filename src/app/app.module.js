@@ -24,30 +24,30 @@ var mock_backend_service_1 = require("./backend/mock-backend.service");
 var AppModule = (function () {
     function AppModule() {
     }
+    AppModule = __decorate([
+        core_1.NgModule({
+            imports: [platform_browser_1.BrowserModule, app_routing_1.routing],
+            declarations: [app_component_1.AppComponent, nav_component_1.NavComponent, main_component_1.MainComponent, step1_component_1.MainComponent1, step1_component_1.FooterComponent1,
+                step2_component_1.MainComponent2, step2_component_1.FooterComponent2, step3_component_1.MainComponent3, step3_component_1.FooterComponent3,
+                step4_component_1.MainComponent4, step4_component_1.FooterComponent4, final_component_1.FinalMainComponent, final_component_1.FinalFooterComponent
+            ],
+            providers: [
+                wizard_service_1.ValidationService,
+                mock_backend_service_1.MockBackendService,
+                testing_1.MockBackend,
+                http_1.BaseRequestOptions,
+                {
+                    provide: http_1.Http,
+                    deps: [testing_1.MockBackend, http_1.BaseRequestOptions],
+                    useFactory: function (backend, options) {
+                        return new http_1.Http(backend, options);
+                    }
+                }
+            ],
+            bootstrap: [app_component_1.AppComponent]
+        })
+    ], AppModule);
     return AppModule;
 }());
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, app_routing_1.routing],
-        declarations: [app_component_1.AppComponent, nav_component_1.NavComponent, main_component_1.MainComponent, step1_component_1.MainComponent1, step1_component_1.FooterComponent1,
-            step2_component_1.MainComponent2, step2_component_1.FooterComponent2, step3_component_1.MainComponent3, step3_component_1.FooterComponent3,
-            step4_component_1.MainComponent4, step4_component_1.FooterComponent4, final_component_1.FinalMainComponent, final_component_1.FinalFooterComponent
-        ],
-        providers: [
-            wizard_service_1.ValidationService,
-            mock_backend_service_1.MockBackendService,
-            testing_1.MockBackend,
-            http_1.BaseRequestOptions,
-            {
-                provide: http_1.Http,
-                deps: [testing_1.MockBackend, http_1.BaseRequestOptions],
-                useFactory: function (backend, options) {
-                    return new http_1.Http(backend, options);
-                }
-            }
-        ],
-        bootstrap: [app_component_1.AppComponent]
-    })
-], AppModule);
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

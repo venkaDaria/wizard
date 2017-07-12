@@ -35,11 +35,11 @@ var BaseComponent = (function () {
     BaseComponent.prototype.hasValue = function (key) {
         return session_1.Session.has(this.params[key]);
     };
+    BaseComponent = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [router_1.Router])
+    ], BaseComponent);
     return BaseComponent;
 }());
-BaseComponent = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [router_1.Router])
-], BaseComponent);
 exports.BaseComponent = BaseComponent;
 //# sourceMappingURL=base.component.js.map

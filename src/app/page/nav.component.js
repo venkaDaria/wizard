@@ -26,12 +26,12 @@ var NavComponent = (function (_super) {
     NavComponent.prototype.urlEquals = function (idx) {
         return this.router.url === this.steps[idx];
     };
+    NavComponent = __decorate([
+        core_1.Component({
+            templateUrl: 'templates/page/nav.html'
+        })
+    ], NavComponent);
     return NavComponent;
 }(base_component_1.BaseComponent));
-NavComponent = __decorate([
-    core_1.Component({
-        templateUrl: 'templates/page/nav.html'
-    })
-], NavComponent);
 exports.NavComponent = NavComponent;
 //# sourceMappingURL=nav.component.js.map

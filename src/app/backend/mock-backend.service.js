@@ -107,12 +107,12 @@ var MockBackendService = (function () {
             });
         }
     };
+    MockBackendService.URL = '/api/valid/';
+    MockBackendService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [testing_1.MockBackend, router_1.Router])
+    ], MockBackendService);
     return MockBackendService;
 }());
-MockBackendService.URL = '/api/valid/';
-MockBackendService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [testing_1.MockBackend, router_1.Router])
-], MockBackendService);
 exports.MockBackendService = MockBackendService;
 //# sourceMappingURL=mock-backend.service.js.map
