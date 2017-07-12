@@ -115,10 +115,9 @@ var MainComponent = (function (_super) {
             templateUrl: 'templates/page/main.html'
         }),
         core_1.Injectable(),
-        __metadata("design:paramtypes", [wizard_service_1.ValidationService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object])
+        __metadata("design:paramtypes", [wizard_service_1.ValidationService, router_1.Router])
     ], MainComponent);
     return MainComponent;
-    var _a;
 }(base_component_1.BaseComponent));
 exports.MainComponent = MainComponent;
 //# sourceMappingURL=main.component.js.map
