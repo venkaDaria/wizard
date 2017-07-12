@@ -1,27 +1,26 @@
 <ul class="nav nav-pills nav-justified thumbnail">
-    <ng-template ngFor let-i [ngForOf]="[0, 1, 2, 3, 4]">
-        <li id="li{{i}}" [class.active]="urlEquals(i)" [class.disabled]="i != 0 && !hasValue(i)"
-            [class.bg-success]="hasValue(i + 1) || i == steps.length - 1 && hasValue(i)" title="Step {{i + 1}}">
 
-            <a (click)="i != 0 && !hasValue(i) || go(i)">
-                <div *ngIf="i < steps.length - 1; else finalBlock">
-                    <div *ngIf="hasValue(i + 1); else elseBlock">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-check-circle fa-stack-2x"></i>
-                        </span>
-                    </div>
+    <li *ngFor="let idx of [0, 1, 2, 3, 4]" title="Step {{idx + 1}}"
+        [class.active]="urlEquals(idx)" [class.disabled]="idx != 0 && !hasValue(idx)"
+        [class.bg-success]="hasValue(idx + 1) || idx == steps.length - 1 && hasValue(idx)">
+
+        <a (click)="idx != 0 && !hasValue(idx) || go(idx)">
+            <div *ngIf="idx < steps.length - 1; else finalBlock">
+                <div *ngIf="hasValue(idx + 1); else elseBlock">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-check-circle fa-stack-2x"></i>
+                    </span>
                 </div>
-            </a>
+            </div>
+        </a>
 
-            <ng-template #elseBlock>
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle-thin fa-stack-2x"></i>
-                    <strong class="fa-stack-lg">{{i + 1}}</strong>
-                </span>
-            </ng-template>
-
-        </li>
-    </ng-template>
+        <ng-template #elseBlock>
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+                <strong class="fa-stack-lg">{{idx + 1}}</strong>
+            </span>
+        </ng-template>
+    </li>
 
     <ng-template #finalBlock>
          <span class="fa-stack fa-lg">
