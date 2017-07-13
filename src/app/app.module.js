@@ -8,11 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var app_component_1 = require("./app.component");
-var step1_component_1 = require("./step/step1.component");
-var step2_component_1 = require("./step/step2.component");
-var step3_component_1 = require("./step/step3.component");
-var step4_component_1 = require("./step/step4.component");
-var final_component_1 = require("./step/final.component");
 var nav_component_1 = require("./page/nav.component");
 var main_component_1 = require("./page/main.component");
 var testing_1 = require("@angular/http/testing");
@@ -21,15 +16,17 @@ var http_1 = require("@angular/http");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_routing_1 = require("./app.routing");
 var mock_backend_service_1 = require("./backend/mock-backend.service");
+var step_component_1 = require("./page/step.component");
+var footer_component_1 = require("./page/footer.component");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, app_routing_1.routing],
-            declarations: [app_component_1.AppComponent, nav_component_1.NavComponent, main_component_1.MainComponent, step1_component_1.MainComponent1, step1_component_1.FooterComponent1,
-                step2_component_1.MainComponent2, step2_component_1.FooterComponent2, step3_component_1.MainComponent3, step3_component_1.FooterComponent3,
-                step4_component_1.MainComponent4, step4_component_1.FooterComponent4, final_component_1.FinalMainComponent, final_component_1.FinalFooterComponent
+            declarations: [app_component_1.AppComponent, nav_component_1.NavComponent, main_component_1.MainComponent, step_component_1.MainComponent1, footer_component_1.FooterComponent1,
+                step_component_1.MainComponent2, footer_component_1.FooterComponent2, step_component_1.MainComponent3, footer_component_1.FooterComponent3,
+                step_component_1.MainComponent4, footer_component_1.FooterComponent4, step_component_1.FinalMainComponent, footer_component_1.FinalFooterComponent
             ],
             providers: [
                 wizard_service_1.ValidationService,

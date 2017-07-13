@@ -1,5 +1,5 @@
 import {Session} from "../util/session";
-import {Component, Injectable, ViewChild} from "@angular/core";
+import {Component, Injectable} from "@angular/core";
 import {ValidationService} from "../service/wizard.service";
 import {BaseComponent} from "./base.component";
 import {Router} from "@angular/router";

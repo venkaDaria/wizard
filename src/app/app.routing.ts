@@ -1,12 +1,21 @@
 import {ModuleWithProviders} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {FooterComponent1, MainComponent1} from "./step/step1.component";
-import {FooterComponent2, MainComponent2} from "./step/step2.component";
-import {FooterComponent3, MainComponent3} from "./step/step3.component";
-import {FooterComponent4, MainComponent4} from "./step/step4.component";
-import {FinalFooterComponent, FinalMainComponent} from "./step/final.component";
 import {NavComponent} from "./page/nav.component";
 import {MainComponent} from "./page/main.component";
+import {
+    FinalFooterComponent,
+    FooterComponent1,
+    FooterComponent2,
+    FooterComponent3,
+    FooterComponent4
+} from "./page/footer.component";
+import {
+    FinalMainComponent,
+    MainComponent1,
+    MainComponent2,
+    MainComponent3,
+    MainComponent4
+} from "./page/step.component";
 
 const appRoutes: Routes = [
     {path: '', redirectTo: 'step1', pathMatch: 'full'},
