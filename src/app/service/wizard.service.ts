@@ -8,10 +8,8 @@ export class ValidationService {
     constructor(private http: Http) {
     }
 
-    isValid(key: string, form: any): Promise<string> {
-        let value = form[key].value;
-
-        return this.http.get(MockBackendService.URL + key, new RequestOptions({params: {param: value}}))
+    isValid(form: any): Promise<string> {
+        return this.http.get(MockBackendService.URL, new RequestOptions({params: form.value}))
             .toPromise()
             .then(response => response.json())
             .catch((err: any) => console.error(err));

@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
 import {DebugElement} from "@angular/core";
-import {FooterComponent1} from "../app/page/footer.component";
+import {FooterComponent1} from "../../app/page/footer.component";
 
 describe('FooterComponent for Step1 (inline template)', () => {
 

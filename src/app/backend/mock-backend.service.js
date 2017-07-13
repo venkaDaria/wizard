@@ -62,31 +62,31 @@ var MockBackendService = (function () {
         }
         function callMock(c) {
             return __awaiter(this, void 0, void 0, function () {
-                var param, answer, msg;
+                var params, answer, msg;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0: return [4 /*yield*/, delay()];
                         case 1:
                             _a.sent();
                             console.log('mockConnection URL:: ' + c.request.url);
-                            param = router.parseUrl(c.request.url).queryParams.param;
+                            params = router.parseUrl(c.request.url).queryParams;
                             answer = {};
                             switch (router.url) {
                                 case '/step1':
-                                    if (param.length < 7) {
+                                    if (params.param1.length < 7) {
                                         answer['errorMessage'] = 'Param1 must be at least 7';
                                     }
                                     break;
                                 case '/step2':
-                                    if (param !== 'hello') {
+                                    if (params.param2 !== 'hello') {
                                         answer['errorMessage'] = 'Param2 must be exactly "hello"';
                                     }
                                     break;
                                 case '/step3':
-                                    if (param.length < 5) {
+                                    if (params.param3.length < 5) {
                                         answer['errorMessage'] = 'Param3 must be at least 5';
                                     }
-                                    if (!param.match('^\\d+$')) {
+                                    if (!params.param3.match('^\\d+$')) {
                                         msg = 'Param3 must contain only digits';
                                         answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '. ' + msg;
                                     }
@@ -107,7 +107,7 @@ var MockBackendService = (function () {
             });
         }
     };
-    MockBackendService.URL = '/api/valid/';
+    MockBackendService.URL = '/api/valid';
     MockBackendService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [testing_1.MockBackend, router_1.Router])

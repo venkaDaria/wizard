@@ -69,21 +69,20 @@ var MainComponent = (function (_super) {
     }
     MainComponent.prototype.goNext = function (idx) {
         var self = this;
-        var form = this.form.nativeElement;
         this.go(idx, goNextAsync);
         function goNextAsync() {
             return __awaiter(this, void 0, void 0, function () {
                 var answer;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, self.service.isValid(self.params[idx], form)];
+                        case 0: return [4 /*yield*/, self.service.isValid(self.form)];
                         case 1:
                             answer = _a.sent();
                             if (!answer['errorMessage']) return [3 /*break*/, 2];
                             session_1.Session.set('errorMessage', answer['errorMessage']);
                             return [3 /*break*/, 4];
                         case 2:
-                            session_1.Session.set(self.params[idx], form[self.params[idx]].value);
+                            session_1.Session.set(self.params[idx], self.form[self.params[idx]]);
                             return [4 /*yield*/, self.router.navigateByUrl(self.steps[idx])];
                         case 3:
                             _a.sent();

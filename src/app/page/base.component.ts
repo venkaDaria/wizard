@@ -22,11 +22,9 @@ export abstract class BaseComponent {
         Session.set('loading', true);
         Session.remove('errorMessage');
 
-        console.log("hello");
-
         asyncCall()
             .then(() => {
-                console.log('Go to' + this.steps[idx]);
+                console.log('Try to go to' + this.steps[idx]);
                 Session.remove('loading');
             })
             .catch((err: any) => console.error(err));

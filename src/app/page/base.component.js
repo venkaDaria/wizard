@@ -64,10 +64,9 @@ var BaseComponent = (function () {
         var _this = this;
         session_1.Session.set('loading', true);
         session_1.Session.remove('errorMessage');
-        console.log("hello");
         asyncCall()
             .then(function () {
-            console.log('Go to' + _this.steps[idx]);
+            console.log('Try to go to' + _this.steps[idx]);
             session_1.Session.remove('loading');
         })
             .catch(function (err) { return console.error(err); });

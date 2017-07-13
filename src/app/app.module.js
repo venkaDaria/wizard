@@ -18,12 +18,13 @@ var app_routing_1 = require("./app.routing");
 var mock_backend_service_1 = require("./backend/mock-backend.service");
 var step_component_1 = require("./page/step.component");
 var footer_component_1 = require("./page/footer.component");
+var forms_1 = require("@angular/forms");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, app_routing_1.routing],
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_1.routing],
             declarations: [app_component_1.AppComponent, nav_component_1.NavComponent, main_component_1.MainComponent, step_component_1.MainComponent1, footer_component_1.FooterComponent1,
                 step_component_1.MainComponent2, footer_component_1.FooterComponent2, step_component_1.MainComponent3, footer_component_1.FooterComponent3,
                 step_component_1.MainComponent4, footer_component_1.FooterComponent4, step_component_1.FinalMainComponent, footer_component_1.FinalFooterComponent

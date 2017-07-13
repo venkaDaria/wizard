@@ -23,9 +23,10 @@ import {
     FooterComponent3,
     FooterComponent4
 } from "./page/footer.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
-    imports: [BrowserModule, routing],
+    imports: [BrowserModule, FormsModule, routing],
     declarations: [AppComponent, NavComponent, MainComponent, MainComponent1, FooterComponent1,
         MainComponent2, FooterComponent2, MainComponent3, FooterComponent3,
         MainComponent4, FooterComponent4, FinalMainComponent, FinalFooterComponent

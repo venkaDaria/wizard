@@ -18,17 +18,16 @@ export class MainComponent extends BaseComponent {
 
     goNext(idx: number) {
         let self = this;
-        let form = this.form.nativeElement;
 
         this.go(idx, goNextAsync);
 
         async function goNextAsync() {
-            let answer = await self.service.isValid(self.params[idx], form);
+            let answer = await self.service.isValid(self.form);
 
             if (answer['errorMessage']) {
                 Session.set('errorMessage', answer['errorMessage']);
             } else {
-                Session.set(self.params[idx], form[self.params[idx]].value);
+                Session.set(self.params[idx], self.form[self.params[idx]]);
                 await self.router.navigateByUrl(self.steps[idx]);
             }
         }

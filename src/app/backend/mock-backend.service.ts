@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 
 @Injectable()
 export class MockBackendService {
-    static readonly URL: string = '/api/valid/';
+    static readonly URL: string = '/api/valid';
 
     constructor(private backend: MockBackend, private router: Router) {
     }
@@ -25,25 +25,25 @@ export class MockBackendService {
 
             console.log('mockConnection URL:: ' + c.request.url);
 
-            const param = router.parseUrl(c.request.url).queryParams.param;
+            const params = router.parseUrl(c.request.url).queryParams;
             let answer = {};
 
             switch (router.url) {
                 case '/step1':
-                    if (param.length < 7) {
+                    if (params.param1.length < 7) {
                         answer['errorMessage'] = 'Param1 must be at least 7';
                     }
                     break;
                 case '/step2':
-                    if (param !== 'hello') {
+                    if (params.param2 !== 'hello') {
                         answer['errorMessage'] = 'Param2 must be exactly "hello"';
                     }
                     break;
                 case '/step3':
-                    if (param.length < 5) {
+                    if (params.param3.length < 5) {
                         answer['errorMessage'] = 'Param3 must be at least 5';
                     }
-                    if (!param.match('^\\d+$')) {
+                    if (!params.param3.match('^\\d+$')) {
                         let msg = 'Param3 must contain only digits';
                         answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '. ' + msg;
                     }

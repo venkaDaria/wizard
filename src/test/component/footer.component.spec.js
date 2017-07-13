@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var testing_1 = require("@angular/core/testing");
 var platform_browser_1 = require("@angular/platform-browser");
-var footer_component_1 = require("../app/page/footer.component");
+var footer_component_1 = require("../../app/page/footer.component");
 describe('FooterComponent for Step1 (inline template)', function () {
     var comp;
     var fixture;
