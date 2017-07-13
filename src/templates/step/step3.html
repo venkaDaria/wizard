@@ -1,7 +1,7 @@
 <form #form="ngForm" (submit)="$event.preventDefault(); goNext(3)">
     <div class="form-group">
         <label for="param3">Param 3:</label><br/>
-        <input class="form-control" name="param3" id="param3" value="{{getValue(3)}}" required ngModel/>
+        <input class="form-control" name="param3" id="param3" value="{{getValue('param3')}}" required ngModel/>
     </div>
     <a role="button" (click)="goTo(1)" class="btn btn-success"><< Prev</a>
     <input type="submit" class="btn btn-success" value="Next >>"/>

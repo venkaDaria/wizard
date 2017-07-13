@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 })
 @Injectable()
 export class MainComponent extends BaseComponent {
+
     @ViewChild('form')
     private form: any;
 
@@ -27,14 +28,14 @@ export class MainComponent extends BaseComponent {
             if (answer['errorMessage']) {
                 Session.set('errorMessage', answer['errorMessage']);
             } else {
-                Session.set(self.params[idx], self.form[self.params[idx]]);
+                self.form.value.forEach((key: string, value: string) => Session.set(key, value));
                 await self.router.navigateByUrl(self.steps[idx]);
             }
         }
     }
 
-    getValue(key: any): string {
-        return Session.get(this.params[key]);
+    getValue(key: string): string {
+        return Session.get(key);
     }
 
     clear() {

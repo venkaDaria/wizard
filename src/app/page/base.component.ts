@@ -6,15 +6,6 @@ import {Injectable} from "@angular/core";
 export abstract class BaseComponent {
     protected steps = ["/step1", "/step2", "/step3", "/step4", "/final"];
 
-    protected params = {
-        1: 'param1',
-        2: 'param2',
-        3: 'param3',
-        4: 'param4',
-        errorMessage: 'errorMessage',
-        loading: 'loading'
-    };
-
     constructor(protected router: Router) {
     }
 
@@ -34,7 +25,7 @@ export abstract class BaseComponent {
         this.go(idx, async () => await this.router.navigateByUrl(this.steps[idx]));
     }
 
-    hasValue(key: any): boolean {
-        return Session.has(this.params[key]);
+    hasValue(key: string): boolean {
+        return Session.has(key);
     }
 }

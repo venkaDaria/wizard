@@ -20,6 +20,10 @@ export class MockBackendService {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
+        function addErrorMessage(answer: {}, msg: string) {
+            answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '. ' + msg;
+        }
+
         async function callMock(c: MockConnection) {
             await delay();
 
@@ -30,28 +34,30 @@ export class MockBackendService {
 
             switch (router.url) {
                 case '/step1':
-                    if (params.param1.length < 7) {
-                        answer['errorMessage'] = 'Param1 must be at least 7';
+                    if (params.param1a.length < 7) {
+                        addErrorMessage(answer, 'Param1a must be at least 7');
+                    }
+                    if (params.param1b.length < 6) {
+                        addErrorMessage(answer, 'Param1b must be at least 6');
                     }
                     break;
                 case '/step2':
                     if (params.param2 !== 'hello') {
-                        answer['errorMessage'] = 'Param2 must be exactly "hello"';
+                        addErrorMessage(answer, 'Param2 must be exactly "hello"');
                     }
                     break;
                 case '/step3':
                     if (params.param3.length < 5) {
-                        answer['errorMessage'] = 'Param3 must be at least 5';
+                        addErrorMessage(answer, 'Param3 must be at least 5');
                     }
                     if (!params.param3.match('^\\d+$')) {
-                        let msg = 'Param3 must contain only digits';
-                        answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '. ' + msg;
+                        addErrorMessage(answer, 'Param3 must contain only digits');
                     }
                     break;
                 case '/step4':
                     break;
                 default:
-                    answer['errorMessage'] = 'Request is incorrect';
+                    addErrorMessage(answer, 'Request is incorrect');
                     break;
             }
 
