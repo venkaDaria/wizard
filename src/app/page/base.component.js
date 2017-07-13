@@ -60,26 +60,26 @@ var BaseComponent = (function () {
             loading: 'loading'
         };
     }
-    BaseComponent.prototype.go = function (idx) {
+    BaseComponent.prototype.go = function (idx, asyncCall) {
         var _this = this;
-        var self = this;
-        goAsync()
-            .then(function (success) { return console.log('Go to' + _this.steps[idx]); })
+        session_1.Session.set('loading', true);
+        session_1.Session.remove('errorMessage');
+        console.log("hello");
+        asyncCall()
+            .then(function () {
+            console.log('Go to' + _this.steps[idx]);
+            session_1.Session.remove('loading');
+        })
             .catch(function (err) { return console.error(err); });
-        function goAsync() {
-            return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            session_1.Session.remove('errorMessage');
-                            return [4 /*yield*/, self.router.navigateByUrl(self.steps[idx])];
-                        case 1:
-                            _a.sent();
-                            return [2 /*return*/];
-                    }
-                });
-            });
-        }
+    };
+    BaseComponent.prototype.goTo = function (idx) {
+        var _this = this;
+        this.go(idx, function () { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, this.router.navigateByUrl(this.steps[idx])];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        }); }); });
     };
     BaseComponent.prototype.hasValue = function (key) {
         return session_1.Session.has(this.params[key]);

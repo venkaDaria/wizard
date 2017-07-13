@@ -20,14 +20,9 @@ export class MainComponent extends BaseComponent {
         let self = this;
         let form = this.form.nativeElement;
 
-        goNextAsync()
-            .then((success: any) => console.log('Go to' + this.steps[idx]))
-            .catch((err: any) => console.error(err));
+        this.go(idx, goNextAsync);
 
         async function goNextAsync() {
-            Session.set('loading', true);
-            Session.remove('errorMessage');
-
             let answer = await self.service.isValid(self.params[idx], form);
 
             if (answer['errorMessage']) {
@@ -36,8 +31,6 @@ export class MainComponent extends BaseComponent {
                 Session.set(self.params[idx], form[self.params[idx]].value);
                 await self.router.navigateByUrl(self.steps[idx]);
             }
-
-            Session.remove('loading');
         }
     }
 

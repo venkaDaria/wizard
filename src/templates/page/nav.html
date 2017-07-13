@@ -4,7 +4,7 @@
         [class.active]="urlEquals(idx)" [class.disabled]="idx != 0 && !hasValue(idx)"
         [class.bg-success]="hasValue(idx + 1) || idx == steps.length - 1 && hasValue(idx)">
 
-        <a (click)="idx != 0 && !hasValue(idx) || go(idx)">
+        <a (click)="idx != 0 && !hasValue(idx) || goTo(idx)">
             <div *ngIf="idx < steps.length - 1; else finalBlock">
                 <div *ngIf="hasValue(idx + 1); else elseBlock">
                     <span class="fa-stack fa-lg">

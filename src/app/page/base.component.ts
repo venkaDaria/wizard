@@ -18,17 +18,22 @@ export abstract class BaseComponent {
     constructor(protected router: Router) {
     }
 
-    go(idx: number) {
-        let self = this;
+    protected go(idx: number, asyncCall: () => Promise<any>) {
+        Session.set('loading', true);
+        Session.remove('errorMessage');
 
-        goAsync()
-            .then((success: any) => console.log('Go to' + this.steps[idx]))
+        console.log("hello");
+
+        asyncCall()
+            .then(() => {
+                console.log('Go to' + this.steps[idx]);
+                Session.remove('loading');
+            })
             .catch((err: any) => console.error(err));
+    }
 
-        async function goAsync() {
-            Session.remove('errorMessage');
-            await self.router.navigateByUrl(self.steps[idx]);
-        }
+    goTo(idx: number) {
+        this.go(idx, async () => await this.router.navigateByUrl(this.steps[idx]));
     }
 
     hasValue(key: any): boolean {
