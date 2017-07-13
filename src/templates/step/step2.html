@@ -1,8 +1,8 @@
-<form (submit)="$event.preventDefault(); goNext(2, param2.value)">
+<form #form2 (submit)="$event.preventDefault(); goNext(2, form2.param2.value)">
     <div class="form-group">
         <label for="param2">Param 2:</label><br/>
-        <input class="form-control" name="param2" id="param2" #param2 value="{{getValue(2)}}" required/>
+        <input class="form-control" name="param2" id="param2" value="{{getValue(2)}}" required/>
     </div>
     <a role="button" (click)="go(0)" class="btn btn-success"><< Prev</a>
-    <a role="button" (click)="goNext(2, param2.value)" class="btn btn-success">Next >></a>
+    <input type="submit" class="btn btn-success" value="Next >>"/>
 </form>

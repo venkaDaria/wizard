@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {MainComponent} from "./main.component";
+
 @Component({
     templateUrl: 'templates/step/step1.html'
 })

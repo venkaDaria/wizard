@@ -1,8 +1,8 @@
-<form (submit)="$event.preventDefault(); goNext(1, param1.value)">
+<form #form1 (submit)="$event.preventDefault(); goNext(1, form1.param1.value)">
     <div class="form-group">
         <label for="param1">Param 1:</label><br/>
-        <input class="form-control" name="param1" id="param1" #param1 value="{{getValue(1)}}" required>
+        <input class="form-control" name="param1" id="param1" value="{{getValue(1)}}" required>
     </div>
     <a role="button" class="btn disabled"><< Prev</a>
-    <a role="button" (click)="goNext(1, param1.value)" class="btn btn-success">Next >></a>
+    <input type="submit" class="btn btn-success" value="Next >>"/>
 </form>
