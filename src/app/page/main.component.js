@@ -67,9 +67,10 @@ var MainComponent = (function (_super) {
         _this.router = router;
         return _this;
     }
-    MainComponent.prototype.goNext = function (idx, value) {
+    MainComponent.prototype.goNext = function (idx) {
         var _this = this;
         var self = this;
+        var form = this.form.nativeElement;
         goNextAsync()
             .then(function (success) { return console.log('Go to' + _this.steps[idx]); })
             .catch(function (err) { return console.error(err); });
@@ -81,14 +82,14 @@ var MainComponent = (function (_super) {
                         case 0:
                             session_1.Session.set('loading', true);
                             session_1.Session.remove('errorMessage');
-                            return [4 /*yield*/, self.service.isValid(self.params[idx], value)];
+                            return [4 /*yield*/, self.service.isValid(self.params[idx], form)];
                         case 1:
                             answer = _a.sent();
                             if (!answer['errorMessage']) return [3 /*break*/, 2];
                             session_1.Session.set('errorMessage', answer['errorMessage']);
                             return [3 /*break*/, 4];
                         case 2:
-                            session_1.Session.set(self.params[idx], value);
+                            session_1.Session.set(self.params[idx], form[self.params[idx]].value);
                             return [4 /*yield*/, self.router.navigateByUrl(self.steps[idx])];
                         case 3:
                             _a.sent();
@@ -110,6 +111,10 @@ var MainComponent = (function (_super) {
             .then(function (success) { return console.log('Go to first page'); })
             .catch(function (err) { return console.error(err); });
     };
+    __decorate([
+        core_1.ViewChild('form'),
+        __metadata("design:type", Object)
+    ], MainComponent.prototype, "form", void 0);
     MainComponent = __decorate([
         core_1.Component({
             templateUrl: 'templates/page/main.html'

@@ -19,11 +19,16 @@ export abstract class BaseComponent {
     }
 
     go(idx: number) {
-        Session.remove('errorMessage');
+        let self = this;
 
-        this.router.navigateByUrl(this.steps[idx])
-            .then((success: any) => console.log('Go to ' + this.steps[idx]))
+        goAsync()
+            .then((success: any) => console.log('Go to' + this.steps[idx]))
             .catch((err: any) => console.error(err));
+
+        async function goAsync() {
+            Session.remove('errorMessage');
+            await self.router.navigateByUrl(self.steps[idx]);
+        }
     }
 
     hasValue(key: any): boolean {
