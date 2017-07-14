@@ -18,27 +18,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var base_component_1 = require("./base.component");
-var storage_1 = require("../util/storage");
+var session_1 = require("../util/session");
 var NavComponent = (function (_super) {
     __extends(NavComponent, _super);
     function NavComponent() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.stepNames = ['StepComponent1', 'StepComponent2', 'StepComponent3',
-            'StepComponent4', 'FinalStepComponent'];
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     NavComponent.prototype.urlEquals = function (idx) {
         return this.router.url === this.steps[idx];
     };
     NavComponent.prototype.isDisabled = function (idx) {
-        return idx != 0 && !this.hasValues(this.stepNames[idx - 1]);
+        return idx != 0 && !this.isValid(idx - 1);
     };
-    NavComponent.prototype.isSuccess = function (stepComponent, idx) {
-        return idx < this.steps.length - 1 && this.hasValues(stepComponent);
+    NavComponent.prototype.isSuccess = function (idx) {
+        return idx < this.steps.length - 1 && this.isValid(idx);
     };
-    NavComponent.prototype.hasValues = function (stepComponent) {
-        var step = storage_1.stepStorage.get(stepComponent);
-        return step != undefined && step.isValidOrNot();
+    NavComponent.prototype.isValid = function (idx) {
+        return session_1.Session.get(this.steps[idx]);
+    };
+    NavComponent.setValid = function (key, value) {
+        session_1.Session.set(key, value);
     };
     NavComponent = __decorate([
         core_1.Component({

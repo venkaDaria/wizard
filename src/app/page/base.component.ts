@@ -1,8 +1,6 @@
 import {Session} from "../util/session";
 import {Router} from "@angular/router";
 import {Component, Injectable} from "@angular/core";
-import {StepComponent} from "./base.step.component";
-import {stepStorage} from "../util/storage";
 
 @Component({
     templateUrl: 'templates/page/main.html'
@@ -45,9 +43,5 @@ export class BaseComponent {
         this.router.navigateByUrl('/')
             .then((success: any) => console.log('Go to first page'))
             .catch((err: any) => console.error(err));
-    }
-
-    onActivate(componentRef: StepComponent) {
-        stepStorage.addIfNotExist(componentRef);
     }
 }

@@ -47,7 +47,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var session_1 = require("../util/session");
 var router_1 = require("@angular/router");
 var core_1 = require("@angular/core");
-var storage_1 = require("../util/storage");
 var BaseComponent = (function () {
     function BaseComponent(router) {
         this.router = router;
@@ -84,9 +83,6 @@ var BaseComponent = (function () {
         this.router.navigateByUrl('/')
             .then(function (success) { return console.log('Go to first page'); })
             .catch(function (err) { return console.error(err); });
-    };
-    BaseComponent.prototype.onActivate = function (componentRef) {
-        storage_1.stepStorage.addIfNotExist(componentRef);
     };
     BaseComponent = __decorate([
         core_1.Component({

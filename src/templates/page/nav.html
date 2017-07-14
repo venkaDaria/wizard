@@ -1,12 +1,12 @@
 <ul class="nav nav-pills nav-justified thumbnail">
 
-    <li *ngFor="let step of stepNames; let idx = index" title="Step {{idx + 1}}"
+    <li *ngFor="let idx of [0, 1, 2, 3, 4]" title="Step {{idx + 1}}"
         [class.active]="urlEquals(idx)" [class.disabled]="isDisabled(idx)"
-        [class.bg-success]="isSuccess(step, idx)">
+        [class.bg-success]="isSuccess(idx)">
 
         <a (click)="isDisabled(idx) || goTo(idx)">
             <div *ngIf="idx < steps.length - 1; else finalBlock">
-                <div *ngIf="hasValues(step); else elseBlock">
+                <div *ngIf="isValid(idx); else elseBlock">
                     <span class="fa-stack fa-lg">
                         <i class="fa fa-check-circle fa-stack-2x"></i>
                     </span>

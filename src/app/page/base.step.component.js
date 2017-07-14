@@ -57,14 +57,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var session_1 = require("../util/session");
 var core_1 = require("@angular/core");
 var base_component_1 = require("./base.component");
-var storage_1 = require("../util/storage");
 var StepComponent = (function (_super) {
     __extends(StepComponent, _super);
     function StepComponent(service, router) {
         var _this = _super.call(this, router) || this;
         _this.service = service;
-        var step = storage_1.stepStorage.get(_this.constructor.name);
-        _this.isValid = step != undefined ? step.isValidOrNot() : false;
         return _this;
     }
     StepComponent.prototype.goNext = function (idx) {
@@ -79,7 +76,7 @@ var StepComponent = (function (_super) {
                         case 0: return [4 /*yield*/, self.service.isValid(form)];
                         case 1:
                             answer = _a.sent();
-                            storage_1.stepStorage.get(self.constructor.name).isValid = !answer['errorMessage'];
+                            session_1.Session.set(self.router.url, !answer['errorMessage']);
                             if (!!answer['errorMessage']) return [3 /*break*/, 3];
                             Object.keys(form).forEach(function (key) { return session_1.Session.set(key, form[key]); });
                             return [4 /*yield*/, self.router.navigateByUrl(self.steps[idx])];
@@ -94,9 +91,6 @@ var StepComponent = (function (_super) {
                 });
             });
         }
-    };
-    StepComponent.prototype.isValidOrNot = function () {
-        return this.isValid;
     };
     __decorate([
         core_1.ViewChild('form'),
