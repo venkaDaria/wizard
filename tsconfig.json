@@ -10,13 +10,6 @@
       "es2015",
       "dom"
     ],
-    "include": [
-      "src/app/**/*.ts"
-    ],
-    "exclude": [
-      "node_modules",
-      "src/test/**/*.spec.ts"
-    ],
     "removeComments": false,
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true

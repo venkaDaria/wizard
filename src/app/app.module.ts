@@ -2,19 +2,23 @@ import {NgModule} from "@angular/core";
 
 import {AppComponent} from "./app.component";
 import {NavComponent} from "./page/nav.component";
-import {MainComponent} from "./page/main.component";
 import {MockBackend} from "@angular/http/testing";
-import {ValidationService} from "./service/wizard.service";
+import {
+    StepValidationService1,
+    StepValidationService2,
+    StepValidationService3,
+    StepValidationService4
+} from "./service/wizard.service";
 import {BaseRequestOptions, Http} from "@angular/http";
 import {BrowserModule} from "@angular/platform-browser";
 import {routing} from "./app.routing";
 import {MockBackendService} from "./backend/mock-backend.service";
 import {
-    FinalMainComponent,
-    MainComponent1,
-    MainComponent2,
-    MainComponent3,
-    MainComponent4
+    FinalStepComponent,
+    StepComponent1,
+    StepComponent2,
+    StepComponent3,
+    StepComponent4
 } from "./page/step.component";
 import {
     FinalFooterComponent,
@@ -24,15 +28,20 @@ import {
     FooterComponent4
 } from "./page/footer.component";
 import {FormsModule} from "@angular/forms";
+import {BaseComponent} from "./page/base.component";
 
 @NgModule({
     imports: [BrowserModule, FormsModule, routing],
-    declarations: [AppComponent, NavComponent, MainComponent, MainComponent1, FooterComponent1,
-        MainComponent2, FooterComponent2, MainComponent3, FooterComponent3,
-        MainComponent4, FooterComponent4, FinalMainComponent, FinalFooterComponent
+    declarations: [AppComponent, NavComponent, BaseComponent, StepComponent1, FooterComponent1,
+        StepComponent2, FooterComponent2, StepComponent3, FooterComponent3,
+        StepComponent4, FooterComponent4, FinalStepComponent, FinalFooterComponent
     ],
     providers: [
-        ValidationService,
+        StepValidationService1,
+        StepValidationService2,
+        StepValidationService3,
+        StepValidationService4,
+
         MockBackendService,
         MockBackend,
         BaseRequestOptions,

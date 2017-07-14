@@ -1,7 +1,5 @@
 import {ModuleWithProviders} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {NavComponent} from "./page/nav.component";
-import {MainComponent} from "./page/main.component";
 import {
     FinalFooterComponent,
     FooterComponent1,
@@ -10,12 +8,14 @@ import {
     FooterComponent4
 } from "./page/footer.component";
 import {
-    FinalMainComponent,
-    MainComponent1,
-    MainComponent2,
-    MainComponent3,
-    MainComponent4
+    FinalStepComponent,
+    StepComponent1,
+    StepComponent2,
+    StepComponent3,
+    StepComponent4
 } from "./page/step.component";
+import {NavComponent} from "./page/nav.component";
+import {BaseComponent} from "./page/base.component";
 
 const appRoutes: Routes = [
     {path: '', redirectTo: 'step1', pathMatch: 'full'},
@@ -24,8 +24,8 @@ const appRoutes: Routes = [
         path: 'step1', children: [
         {path: '', component: NavComponent, outlet: 'nav', pathMatch: 'full'},
         {
-            path: '', component: MainComponent, children: [
-            {path: '', component: MainComponent1, pathMatch: 'full'},
+            path: '', component: BaseComponent, children: [
+            {path: '', component: StepComponent1, pathMatch: 'full'},
         ]
         },
         {path: '', component: FooterComponent1, outlet: 'footer', pathMatch: 'full'},
@@ -36,8 +36,8 @@ const appRoutes: Routes = [
         path: 'step2', children: [
         {path: '', component: NavComponent, outlet: 'nav', pathMatch: 'full'},
         {
-            path: '', component: MainComponent, children: [
-            {path: '', component: MainComponent2, pathMatch: 'full'},
+            path: '', component: BaseComponent, children: [
+            {path: '', component: StepComponent2, pathMatch: 'full'},
         ]
         },
         {path: '', component: FooterComponent2, outlet: 'footer', pathMatch: 'full'},
@@ -48,8 +48,8 @@ const appRoutes: Routes = [
         path: 'step3', children: [
         {path: '', component: NavComponent, outlet: 'nav', pathMatch: 'full'},
         {
-            path: '', component: MainComponent, children: [
-            {path: '', component: MainComponent3, pathMatch: 'full'},
+            path: '', component: BaseComponent, children: [
+            {path: '', component: StepComponent3, pathMatch: 'full'},
         ]
         },
         {path: '', component: FooterComponent3, outlet: 'footer', pathMatch: 'full'},
@@ -60,8 +60,8 @@ const appRoutes: Routes = [
         path: 'step4', children: [
         {path: '', component: NavComponent, outlet: 'nav', pathMatch: 'full'},
         {
-            path: '', component: MainComponent, children: [
-            {path: '', component: MainComponent4, pathMatch: 'full'},
+            path: '', component: BaseComponent, children: [
+            {path: '', component: StepComponent4, pathMatch: 'full'},
         ]
         },
         {path: '', component: FooterComponent4, outlet: 'footer', pathMatch: 'full'},
@@ -72,8 +72,8 @@ const appRoutes: Routes = [
         path: 'final', children: [
         {path: '', component: NavComponent, outlet: 'nav', pathMatch: 'full'},
         {
-            path: '', component: MainComponent, children: [
-            {path: '', component: FinalMainComponent, pathMatch: 'full'},
+            path: '', component: BaseComponent, children: [
+            {path: '', component: FinalStepComponent, pathMatch: 'full'},
         ]
         },
         {path: '', component: FinalFooterComponent, outlet: 'footer', pathMatch: 'full'},

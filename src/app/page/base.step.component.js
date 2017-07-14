@@ -1,4 +1,14 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -45,57 +55,54 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var session_1 = require("../util/session");
-var router_1 = require("@angular/router");
 var core_1 = require("@angular/core");
+var base_component_1 = require("./base.component");
 var storage_1 = require("../util/storage");
-var BaseComponent = (function () {
-    function BaseComponent(router) {
-        this.router = router;
-        this.steps = ["/step1", "/step2", "/step3", "/step4", "/final"];
+var StepComponent = (function (_super) {
+    __extends(StepComponent, _super);
+    function StepComponent(service, router) {
+        var _this = _super.call(this, router) || this;
+        _this.service = service;
+        var step = storage_1.stepStorage.get(_this.constructor.name);
+        _this.isValid = step != undefined ? step.isValidOrNot() : false;
+        return _this;
     }
-    BaseComponent.prototype.go = function (idx, asyncCall) {
-        var _this = this;
-        session_1.Session.set('loading', true);
-        session_1.Session.remove('errorMessage');
-        asyncCall()
-            .then(function () {
-            console.log('Try to go to' + _this.steps[idx]);
-            session_1.Session.remove('loading');
-        })
-            .catch(function (err) { return console.error(err); });
+    StepComponent.prototype.goNext = function (idx) {
+        var self = this;
+        var form = this.form.value;
+        this.go(idx, goNextAsync);
+        function goNextAsync() {
+            return __awaiter(this, void 0, void 0, function () {
+                var answer;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, self.service.isValid(form)];
+                        case 1:
+                            answer = _a.sent();
+                            storage_1.stepStorage.get(self.constructor.name).isValid = !answer['errorMessage'];
+                            if (!!answer['errorMessage']) return [3 /*break*/, 3];
+                            Object.keys(form).forEach(function (key) { return session_1.Session.set(key, form[key]); });
+                            return [4 /*yield*/, self.router.navigateByUrl(self.steps[idx])];
+                        case 2:
+                            _a.sent();
+                            return [3 /*break*/, 4];
+                        case 3:
+                            session_1.Session.set('errorMessage', answer['errorMessage']);
+                            _a.label = 4;
+                        case 4: return [2 /*return*/];
+                    }
+                });
+            });
+        }
     };
-    BaseComponent.prototype.goTo = function (idx) {
-        var _this = this;
-        this.go(idx, function () { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, this.router.navigateByUrl(this.steps[idx])];
-                case 1: return [2 /*return*/, _a.sent()];
-            }
-        }); }); });
+    StepComponent.prototype.isValidOrNot = function () {
+        return this.isValid;
     };
-    BaseComponent.prototype.hasValue = function (key) {
-        return session_1.Session.has(key);
-    };
-    BaseComponent.prototype.getValue = function (key) {
-        return session_1.Session.get(key);
-    };
-    BaseComponent.prototype.clear = function () {
-        session_1.Session.clear();
-        this.router.navigateByUrl('/')
-            .then(function (success) { return console.log('Go to first page'); })
-            .catch(function (err) { return console.error(err); });
-    };
-    BaseComponent.prototype.onActivate = function (componentRef) {
-        storage_1.stepStorage.addIfNotExist(componentRef);
-    };
-    BaseComponent = __decorate([
-        core_1.Component({
-            templateUrl: 'templates/page/main.html'
-        }),
-        core_1.Injectable(),
-        __metadata("design:paramtypes", [router_1.Router])
-    ], BaseComponent);
-    return BaseComponent;
-}());
-exports.BaseComponent = BaseComponent;
-//# sourceMappingURL=base.component.js.map
+    __decorate([
+        core_1.ViewChild('form'),
+        __metadata("design:type", Object)
+    ], StepComponent.prototype, "form", void 0);
+    return StepComponent;
+}(base_component_1.BaseComponent));
+exports.StepComponent = StepComponent;
+//# sourceMappingURL=base.step.component.js.map

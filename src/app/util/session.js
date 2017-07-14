@@ -1,9 +1,8 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", {value: true});
+Object.defineProperty(exports, "__esModule", { value: true });
 var Session = (function () {
     function Session() {
     }
-
     Session.set = function (key, value) {
         window.sessionStorage.setItem(key, JSON.stringify(value));
     };
@@ -18,6 +17,9 @@ var Session = (function () {
     };
     Session.clear = function () {
         window.sessionStorage.clear();
+    };
+    Session.getAll = function () {
+        return window.sessionStorage;
     };
     return Session;
 }());

@@ -1,99 +1,100 @@
 "use strict";
 var __extends = (this && this.__extends) || (function () {
-        var extendStatics = Object.setPrototypeOf ||
-            ({__proto__: []} instanceof Array && function (d, b) {
-                d.__proto__ = b;
-            }) ||
-            function (d, b) {
-                for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-            };
-        return function (d, b) {
-            extendStatics(d, b);
-            function __() {
-                this.constructor = d;
-            }
-
-            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-        };
-    })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-        var c = arguments.length,
-            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
-Object.defineProperty(exports, "__esModule", {value: true});
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var main_component_1 = require("./main.component");
-var MainComponent1 = (function (_super) {
-    __extends(MainComponent1, _super);
-    function MainComponent1() {
-        return _super !== null && _super.apply(this, arguments) || this;
+var router_1 = require("@angular/router");
+var wizard_service_1 = require("../service/wizard.service");
+var base_step_component_1 = require("./base.step.component");
+var base_component_1 = require("./base.component");
+var StepComponent1 = (function (_super) {
+    __extends(StepComponent1, _super);
+    function StepComponent1(service, router) {
+        return _super.call(this, service, router) || this;
     }
-
-    MainComponent1 = __decorate([
+    StepComponent1 = __decorate([
         core_1.Component({
             templateUrl: 'templates/step/step1.html'
-        })
-    ], MainComponent1);
-    return MainComponent1;
-}(main_component_1.MainComponent));
-exports.MainComponent1 = MainComponent1;
-var MainComponent2 = (function (_super) {
-    __extends(MainComponent2, _super);
-    function MainComponent2() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        }),
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [wizard_service_1.StepValidationService1, router_1.Router])
+    ], StepComponent1);
+    return StepComponent1;
+}(base_step_component_1.StepComponent));
+exports.StepComponent1 = StepComponent1;
+var StepComponent2 = (function (_super) {
+    __extends(StepComponent2, _super);
+    function StepComponent2(service, router) {
+        return _super.call(this, service, router) || this;
     }
-
-    MainComponent2 = __decorate([
+    StepComponent2 = __decorate([
         core_1.Component({
             templateUrl: 'templates/step/step2.html'
-        })
-    ], MainComponent2);
-    return MainComponent2;
-}(main_component_1.MainComponent));
-exports.MainComponent2 = MainComponent2;
-var MainComponent3 = (function (_super) {
-    __extends(MainComponent3, _super);
-    function MainComponent3() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        }),
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [wizard_service_1.StepValidationService2, router_1.Router])
+    ], StepComponent2);
+    return StepComponent2;
+}(base_step_component_1.StepComponent));
+exports.StepComponent2 = StepComponent2;
+var StepComponent3 = (function (_super) {
+    __extends(StepComponent3, _super);
+    function StepComponent3(service, router) {
+        return _super.call(this, service, router) || this;
     }
-
-    MainComponent3 = __decorate([
+    StepComponent3 = __decorate([
         core_1.Component({
             templateUrl: 'templates/step/step3.html'
-        })
-    ], MainComponent3);
-    return MainComponent3;
-}(main_component_1.MainComponent));
-exports.MainComponent3 = MainComponent3;
-var MainComponent4 = (function (_super) {
-    __extends(MainComponent4, _super);
-    function MainComponent4() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        }),
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [wizard_service_1.StepValidationService3, router_1.Router])
+    ], StepComponent3);
+    return StepComponent3;
+}(base_step_component_1.StepComponent));
+exports.StepComponent3 = StepComponent3;
+var StepComponent4 = (function (_super) {
+    __extends(StepComponent4, _super);
+    function StepComponent4(service, router) {
+        return _super.call(this, service, router) || this;
     }
-
-    MainComponent4 = __decorate([
+    StepComponent4 = __decorate([
         core_1.Component({
             templateUrl: 'templates/step/step4.html'
-        })
-    ], MainComponent4);
-    return MainComponent4;
-}(main_component_1.MainComponent));
-exports.MainComponent4 = MainComponent4;
-var FinalMainComponent = (function (_super) {
-    __extends(FinalMainComponent, _super);
-    function FinalMainComponent() {
+        }),
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [wizard_service_1.StepValidationService4, router_1.Router])
+    ], StepComponent4);
+    return StepComponent4;
+}(base_step_component_1.StepComponent));
+exports.StepComponent4 = StepComponent4;
+var FinalStepComponent = (function (_super) {
+    __extends(FinalStepComponent, _super);
+    function FinalStepComponent() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-
-    FinalMainComponent = __decorate([
+    FinalStepComponent = __decorate([
         core_1.Component({
             templateUrl: 'templates/step/final.html'
         })
-    ], FinalMainComponent);
-    return FinalMainComponent;
-}(main_component_1.MainComponent));
-exports.FinalMainComponent = FinalMainComponent;
+    ], FinalStepComponent);
+    return FinalStepComponent;
+}(base_component_1.BaseComponent));
+exports.FinalStepComponent = FinalStepComponent;
 //# sourceMappingURL=step.component.js.map

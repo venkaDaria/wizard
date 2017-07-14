@@ -19,4 +19,8 @@ export class Session {
     static clear() {
         window.sessionStorage.clear();
     }
+
+    static getAll() {
+        return window.sessionStorage;
+    }
 }

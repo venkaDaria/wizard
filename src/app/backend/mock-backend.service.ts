@@ -1,12 +1,11 @@
 import {Injectable} from "@angular/core";
 import {MockBackend, MockConnection} from "@angular/http/testing";
 import {Response, ResponseOptions} from "@angular/http";
-import {Router} from "@angular/router";
+import {Router, UrlSegment} from "@angular/router";
+import {STEP_1, STEP_2, STEP_3, STEP_4} from "../util/constants";
 
 @Injectable()
 export class MockBackendService {
-    static readonly URL: string = '/api/valid';
-
     constructor(private backend: MockBackend, private router: Router) {
     }
 
@@ -29,32 +28,41 @@ export class MockBackendService {
 
             console.log('mockConnection URL:: ' + c.request.url);
 
-            const params = router.parseUrl(c.request.url).queryParams;
+            const parsedUrl = router.parseUrl(c.request.url);
+
+            const params = parsedUrl.queryParams;
+
+            const urlArray: UrlSegment[] = parsedUrl.root.children.primary.segments;
+            const url: string = urlArray[urlArray.length - 1].toString();
+
             let answer = {};
 
-            switch (router.url) {
-                case '/step1':
-                    if (params.param1a.length < 7) {
+            switch (url) {
+                case STEP_1:
+                    if (!params.param1a || params.param1a.length < 7) {
                         addErrorMessage(answer, 'Param1a must be at least 7');
                     }
-                    if (params.param1b.length < 6) {
+                    if (!params.param1b || params.param1b.length < 6) {
                         addErrorMessage(answer, 'Param1b must be at least 6');
                     }
                     break;
-                case '/step2':
+                case STEP_2:
                     if (params.param2 !== 'hello') {
                         addErrorMessage(answer, 'Param2 must be exactly "hello"');
                     }
                     break;
-                case '/step3':
-                    if (params.param3.length < 5) {
+                case STEP_3:
+                    if (!params.param3 || params.param3.length < 5) {
                         addErrorMessage(answer, 'Param3 must be at least 5');
                     }
-                    if (!params.param3.match('^\\d+$')) {
+                    if (!params.param3 || !params.param3.match('^\\d+$')) {
                         addErrorMessage(answer, 'Param3 must contain only digits');
                     }
                     break;
-                case '/step4':
+                case STEP_4:
+                    if (!params.param4) {
+                        addErrorMessage(answer, 'Params must not be empty');
+                    }
                     break;
                 default:
                     addErrorMessage(answer, 'Request is incorrect');
