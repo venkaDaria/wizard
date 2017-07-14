@@ -29,6 +29,7 @@ import {
 } from "./page/footer.component";
 import {FormsModule} from "@angular/forms";
 import {BaseComponent} from "./page/base.component";
+import {AuthGuard} from "./service/security.service";
 
 @NgModule({
     imports: [BrowserModule, FormsModule, routing],
@@ -41,6 +42,8 @@ import {BaseComponent} from "./page/base.component";
         StepValidationService2,
         StepValidationService3,
         StepValidationService4,
+
+        AuthGuard,
 
         MockBackendService,
         MockBackend,

@@ -1,5 +1,5 @@
 import {Session} from "../util/session";
-import {Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
 import {Component, Injectable} from "@angular/core";
 
 @Component({

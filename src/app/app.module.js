@@ -19,6 +19,7 @@ var step_component_1 = require("./page/step.component");
 var footer_component_1 = require("./page/footer.component");
 var forms_1 = require("@angular/forms");
 var base_component_1 = require("./page/base.component");
+var security_service_1 = require("./service/security.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -34,6 +35,7 @@ var AppModule = (function () {
                 wizard_service_1.StepValidationService2,
                 wizard_service_1.StepValidationService3,
                 wizard_service_1.StepValidationService4,
+                security_service_1.AuthGuard,
                 mock_backend_service_1.MockBackendService,
                 testing_1.MockBackend,
                 http_1.BaseRequestOptions,

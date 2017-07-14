@@ -79,6 +79,7 @@ var StepComponent = (function (_super) {
                             session_1.Session.set(self.router.url, !answer['errorMessage']);
                             if (!!answer['errorMessage']) return [3 /*break*/, 3];
                             Object.keys(form).forEach(function (key) { return session_1.Session.set(key, form[key]); });
+                            session_1.Session.set('next', true);
                             return [4 /*yield*/, self.router.navigateByUrl(self.steps[idx])];
                         case 2:
                             _a.sent();

@@ -16,6 +16,7 @@ import {
 } from "./page/step.component";
 import {NavComponent} from "./page/nav.component";
 import {BaseComponent} from "./page/base.component";
+import {AuthGuard} from "./service/security.service";
 
 const appRoutes: Routes = [
     {path: '', redirectTo: 'step1', pathMatch: 'full'},
@@ -33,7 +34,7 @@ const appRoutes: Routes = [
     },
 
     {
-        path: 'step2', children: [
+        path: 'step2', canActivate: [AuthGuard], children: [
         {path: '', component: NavComponent, outlet: 'nav', pathMatch: 'full'},
         {
             path: '', component: BaseComponent, children: [
@@ -45,7 +46,7 @@ const appRoutes: Routes = [
     },
 
     {
-        path: 'step3', children: [
+        path: 'step3', canActivate: [AuthGuard], children: [
         {path: '', component: NavComponent, outlet: 'nav', pathMatch: 'full'},
         {
             path: '', component: BaseComponent, children: [
@@ -57,7 +58,7 @@ const appRoutes: Routes = [
     },
 
     {
-        path: 'step4', children: [
+        path: 'step4', canActivate: [AuthGuard], children: [
         {path: '', component: NavComponent, outlet: 'nav', pathMatch: 'full'},
         {
             path: '', component: BaseComponent, children: [
@@ -69,7 +70,7 @@ const appRoutes: Routes = [
     },
 
     {
-        path: 'final', children: [
+        path: 'final', canActivate: [AuthGuard], children: [
         {path: '', component: NavComponent, outlet: 'nav', pathMatch: 'full'},
         {
             path: '', component: BaseComponent, children: [

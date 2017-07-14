@@ -36,9 +36,6 @@ var NavComponent = (function (_super) {
     NavComponent.prototype.isValid = function (idx) {
         return session_1.Session.get(this.steps[idx]);
     };
-    NavComponent.setValid = function (key, value) {
-        session_1.Session.set(key, value);
-    };
     NavComponent = __decorate([
         core_1.Component({
             templateUrl: 'templates/page/nav.html'

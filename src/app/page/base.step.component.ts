@@ -25,6 +25,8 @@ export abstract class StepComponent extends BaseComponent {
 
             if (!answer['errorMessage']) {
                 Object.keys(form).forEach((key: string) => Session.set(key, form[key]));
+
+                Session.set('next', true);
                 await self.router.navigateByUrl(self.steps[idx]);
             } else {
                 Session.set('errorMessage', answer['errorMessage']);
