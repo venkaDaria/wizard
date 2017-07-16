@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {MockBackend, MockConnection} from "@angular/http/testing";
 import {Response, ResponseOptions} from "@angular/http";
 import {Router, UrlSegment} from "@angular/router";
-import {STEP_1, STEP_2, STEP_3, STEP_4} from "../util/constants";
+import {ERROR_MESSAGE, STEP_1, STEP_2, STEP_3, STEP_4} from "../util/constants";
 
 @Injectable()
 export class MockBackendService {
@@ -20,7 +20,7 @@ export class MockBackendService {
         }
 
         function addErrorMessage(answer: {}, msg: string) {
-            answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '. ' + msg;
+            answer[ERROR_MESSAGE] = !answer[ERROR_MESSAGE] ? msg : answer[ERROR_MESSAGE] + '. ' + msg;
         }
 
         async function callMock(c: MockConnection) {

@@ -62,7 +62,7 @@ var MockBackendService = (function () {
             return new Promise(function (resolve) { return setTimeout(resolve, ms); });
         }
         function addErrorMessage(answer, msg) {
-            answer['errorMessage'] = !answer['errorMessage'] ? msg : answer['errorMessage'] + '. ' + msg;
+            answer[constants_1.ERROR_MESSAGE] = !answer[constants_1.ERROR_MESSAGE] ? msg : answer[constants_1.ERROR_MESSAGE] + '. ' + msg;
         }
         function callMock(c) {
             return __awaiter(this, void 0, void 0, function () {

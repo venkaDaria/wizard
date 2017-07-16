@@ -47,19 +47,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var session_1 = require("../util/session");
 var router_1 = require("@angular/router");
 var core_1 = require("@angular/core");
+var constants_1 = require("../util/constants");
 var BaseComponent = (function () {
     function BaseComponent(router) {
         this.router = router;
-        this.steps = ["/step1", "/step2", "/step3", "/step4", "/final"];
     }
     BaseComponent.prototype.go = function (idx, asyncCall) {
-        var _this = this;
-        session_1.Session.set('loading', true);
-        session_1.Session.remove('errorMessage');
+        session_1.Session.set(constants_1.LOADING, true);
+        session_1.Session.remove(constants_1.ERROR_MESSAGE);
         asyncCall()
             .then(function () {
-            console.log('Try to go to' + _this.steps[idx]);
-            session_1.Session.remove('loading');
+            console.log('Try to go to ' + constants_1.STEPS[idx]);
+            session_1.Session.remove(constants_1.LOADING);
         })
             .catch(function (err) { return console.error(err); });
     };
@@ -67,7 +66,7 @@ var BaseComponent = (function () {
         var _this = this;
         this.go(idx, function () { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, this.router.navigateByUrl(this.steps[idx])];
+                case 0: return [4 /*yield*/, this.router.navigateByUrl(constants_1.STEPS[idx])];
                 case 1: return [2 /*return*/, _a.sent()];
             }
         }); }); });

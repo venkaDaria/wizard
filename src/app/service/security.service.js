@@ -12,15 +12,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var session_1 = require("../util/session");
+var constants_1 = require("../util/constants");
 var AuthGuard = (function () {
     function AuthGuard(router) {
         this.router = router;
     }
     AuthGuard.prototype.canActivate = function (route, state) {
-        if (session_1.Session.get(state.url) || session_1.Session.get('loading')) {
+        var prevStep = constants_1.STEPS[constants_1.STEPS.indexOf(state.url)];
+        if (session_1.Session.get(prevStep) || session_1.Session.get(constants_1.LOADING)) {
             return true;
         }
-        this.router.navigateByUrl('/')
+        this.router.navigateByUrl(this.router.url)
             .then(function (success) { return console.log('Access denied'); })
             .catch(function (err) { return console.error(err); });
         return false;

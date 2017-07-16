@@ -19,22 +19,28 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var base_component_1 = require("./base.component");
 var session_1 = require("../util/session");
+var constants_1 = require("../util/constants");
 var NavComponent = (function (_super) {
     __extends(NavComponent, _super);
     function NavComponent() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.steps = Array.from({ length: constants_1.STEPS.length }, function (v, k) { return k; });
+        return _this;
     }
     NavComponent.prototype.urlEquals = function (idx) {
-        return this.router.url === this.steps[idx];
+        return this.router.url === constants_1.STEPS[idx];
     };
     NavComponent.prototype.isDisabled = function (idx) {
         return idx != 0 && !this.isValid(idx - 1);
     };
     NavComponent.prototype.isSuccess = function (idx) {
-        return idx < this.steps.length - 1 && this.isValid(idx);
+        return idx < constants_1.STEPS.length - 1 && this.isValid(idx);
     };
     NavComponent.prototype.isValid = function (idx) {
-        return session_1.Session.get(this.steps[idx]);
+        return session_1.Session.get(constants_1.STEPS[idx]);
+    };
+    NavComponent.prototype.isFinal = function (idx) {
+        return idx == constants_1.STEPS.length - 1;
     };
     NavComponent = __decorate([
         core_1.Component({

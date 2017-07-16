@@ -57,6 +57,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var session_1 = require("../util/session");
 var core_1 = require("@angular/core");
 var base_component_1 = require("./base.component");
+var constants_1 = require("../util/constants");
 var StepComponent = (function (_super) {
     __extends(StepComponent, _super);
     function StepComponent(service, router) {
@@ -76,16 +77,16 @@ var StepComponent = (function (_super) {
                         case 0: return [4 /*yield*/, self.service.isValid(form)];
                         case 1:
                             answer = _a.sent();
-                            session_1.Session.set(self.router.url, !answer['errorMessage']);
-                            if (!!answer['errorMessage']) return [3 /*break*/, 3];
+                            session_1.Session.set(self.router.url, !answer[constants_1.ERROR_MESSAGE]);
+                            if (!!answer[constants_1.ERROR_MESSAGE]) return [3 /*break*/, 3];
                             Object.keys(form).forEach(function (key) { return session_1.Session.set(key, form[key]); });
                             session_1.Session.set('next', true);
-                            return [4 /*yield*/, self.router.navigateByUrl(self.steps[idx])];
+                            return [4 /*yield*/, self.router.navigateByUrl(constants_1.STEPS[idx])];
                         case 2:
                             _a.sent();
                             return [3 /*break*/, 4];
                         case 3:
-                            session_1.Session.set('errorMessage', answer['errorMessage']);
+                            session_1.Session.set(constants_1.ERROR_MESSAGE, answer[constants_1.ERROR_MESSAGE]);
                             _a.label = 4;
                         case 4: return [2 /*return*/];
                     }
