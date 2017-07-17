@@ -12,7 +12,8 @@ module.exports = function (config) {
             clearContext: false
         },
         preprocessors: {
-            'src/test/**/*.ts': ['karma-typescript']
+            'src/test/**/*.ts': ['karma-typescript'],
+            'src/app/**/*.ts': ['karma-typescript']
         },
         reporters: ['progress', 'karma-typescript'],
         port: 9876,
