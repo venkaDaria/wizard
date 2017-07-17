@@ -27,4 +27,3 @@ describe('FooterComponent for Step1 (inline template)', function () {
         expect(el.textContent).toContain('Test Title');
     });
 });
-//# sourceMappingURL=footer.component.spec.js.map

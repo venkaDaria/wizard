@@ -5,7 +5,7 @@ module.exports = function (config) {
         files: [
             {pattern: 'node_modules/zone.js/dist/zone.js', included: true, watched: false},
 
-            {pattern: 'src/app/**/*.ts', included: true, watched: false},
+            {pattern: 'src/app/**/*.ts', included: true, watched: true},
             {pattern: 'src/test/**/*.ts', included: true, watched: true}
         ],
         client:{
