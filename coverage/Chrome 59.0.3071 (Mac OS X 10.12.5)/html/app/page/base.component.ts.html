@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app/page/base.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">app/page/</a> base.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">48.28% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>14/29</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">8.33% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">48% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>12/25</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span></td><td class="text"><pre class="prettyprint lang-js">import {Session} from "../util/session";
+import {Router} from "@angular/router";
+import {Component, Injectable} from "@angular/core";
+import {ERROR_MESSAGE, LOADING, STEPS} from "../util/constants";
+&nbsp;
+@Component({
+    templateUrl: 'templates/page/main.html'
+})
+@Injectable()
+export class BaseComponent {
+<span class="fstat-no" title="function not covered" >    constructor(protected <span class="cstat-no" title="statement not covered" >router: Router)</span></span> {
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    protected go(idx: number, asyncCall: () =&gt; Promise&lt;any&gt;)</span> {
+<span class="cstat-no" title="statement not covered" >        Session.set(LOADING, true);</span>
+<span class="cstat-no" title="statement not covered" >        Session.remove(ERROR_MESSAGE);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        asyncCall()</span>
+            .then(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                console.log('Try to go to ' + STEPS[idx]);</span>
+<span class="cstat-no" title="statement not covered" >                Session.remove(LOADING);</span>
+            })
+            .catch(<span class="fstat-no" title="function not covered" >(err: any)</span> =&gt; <span class="cstat-no" title="statement not covered" >console.error(err))</span>;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    goTo(idx: number)</span> {
+<span class="cstat-no" title="statement not covered" >        this.go(idx, <span class="fstat-no" title="function not covered" >async () =&gt; <span class="cstat-no" title="statement not covered" >await this.router.navigateByUrl(STEPS[idx]))</span>;</span></span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    hasValue(key: string)</span>: boolean {
+<span class="cstat-no" title="statement not covered" >        return Session.has(key);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    getValue(key: string)</span>: string {
+<span class="cstat-no" title="statement not covered" >        return Session.get(key);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    clear() {</span>
+<span class="cstat-no" title="statement not covered" >        Session.clear();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.router.navigateByUrl('/')</span>
+            .then(<span class="fstat-no" title="function not covered" >(success: any)</span> =&gt; <span class="cstat-no" title="statement not covered" >console.log('Go to first page'))</span>
+            .catch(<span class="fstat-no" title="function not covered" >(err: any)</span> =&gt; <span class="cstat-no" title="statement not covered" >console.error(err))</span>;
+    }
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jul 17 2017 13:37:26 GMT+0300 (EEST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

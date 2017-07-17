@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app/backend/mock-backend.service.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">app/backend/</a> mock-backend.service.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">27.45% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>14/51</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/27</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">14.29% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">26.67% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>12/45</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span></td><td class="text"><pre class="prettyprint lang-js">import {Injectable} from "@angular/core";
+import {MockBackend, MockConnection} from "@angular/http/testing";
+import {Response, ResponseOptions} from "@angular/http";
+import {Router, UrlSegment} from "@angular/router";
+import {ERROR_MESSAGE, STEP_1, STEP_2, STEP_3, STEP_4} from "../util/constants";
+&nbsp;
+@Injectable()
+export class MockBackendService {
+<span class="fstat-no" title="function not covered" >    constructor(private <span class="cstat-no" title="statement not covered" >backend: MockBackend,</span> private <span class="cstat-no" title="statement not covered" >router: Router)</span></span> {
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    start(ms: number)</span> {
+<span class="cstat-no" title="statement not covered" >        console.log('MockBackendService start');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        let router = this.router;</span>
+<span class="cstat-no" title="statement not covered" >        this.backend.connections.subscribe(callMock);</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function delay(): Promise&lt;any&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            return new Promise(<span class="fstat-no" title="function not covered" >resolve </span>=&gt; <span class="cstat-no" title="statement not covered" >setTimeout(resolve, ms))</span>;</span>
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function addErrorMessage(answer: {}, msg: string)</span> {
+<span class="cstat-no" title="statement not covered" >            answer[ERROR_MESSAGE] = !answer[ERROR_MESSAGE] ? msg : answer[ERROR_MESSAGE] + '. ' + msg;</span>
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        async function callMock(c: MockConnection)</span> {
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >            await delay();</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            console.log('mockConnection URL:: ' + c.request.url);</span>
+&nbsp;
+            const <span class="cstat-no" title="statement not covered" >parsedUrl = router.parseUrl(c.request.url);</span>
+&nbsp;
+            const <span class="cstat-no" title="statement not covered" >params = parsedUrl.queryParams;</span>
+&nbsp;
+            const <span class="cstat-no" title="statement not covered" >urlArray: UrlSegment[] = parsedUrl.root.children.primary.segments;</span>
+            const <span class="cstat-no" title="statement not covered" >url: string = urlArray[urlArray.length - 1].toString();</span>
+&nbsp;
+            let <span class="cstat-no" title="statement not covered" >answer = {};</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            switch (url) {</span>
+                case STEP_1:
+<span class="cstat-no" title="statement not covered" >                    if (!params.param1a || params.param1a.length &lt; 7) {</span>
+<span class="cstat-no" title="statement not covered" >                        addErrorMessage(answer, 'Param1a must be at least 7');</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    if (!params.param1b || params.param1b.length &lt; 6) {</span>
+<span class="cstat-no" title="statement not covered" >                        addErrorMessage(answer, 'Param1b must be at least 6');</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                case STEP_2:
+<span class="cstat-no" title="statement not covered" >                    if (params.param2 !== 'hello') {</span>
+<span class="cstat-no" title="statement not covered" >                        addErrorMessage(answer, 'Param2 must be exactly "hello"');</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                case STEP_3:
+<span class="cstat-no" title="statement not covered" >                    if (!params.param3 || params.param3.length &lt; 5) {</span>
+<span class="cstat-no" title="statement not covered" >                        addErrorMessage(answer, 'Param3 must be at least 5');</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    if (!params.param3 || !params.param3.match('^\\d+$')) {</span>
+<span class="cstat-no" title="statement not covered" >                        addErrorMessage(answer, 'Param3 must contain only digits');</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                case STEP_4:
+<span class="cstat-no" title="statement not covered" >                    if (!params.param4) {</span>
+<span class="cstat-no" title="statement not covered" >                        addErrorMessage(answer, 'Params must not be empty');</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                default:
+<span class="cstat-no" title="statement not covered" >                    addErrorMessage(answer, 'Request is incorrect');</span>
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            console.log(JSON.stringify(answer));</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            c.mockRespond(new Response(new ResponseOptions({</span>
+                body: JSON.stringify(answer)
+            })));
+        }
+    }
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jul 17 2017 13:37:26 GMT+0300 (EEST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
