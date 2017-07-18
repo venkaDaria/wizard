@@ -67,3 +67,4 @@ var FinalFooterComponent = (function () {
     return FinalFooterComponent;
 }());
 exports.FinalFooterComponent = FinalFooterComponent;
+//# sourceMappingURL=footer.component.js.map

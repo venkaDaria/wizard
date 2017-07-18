@@ -18,7 +18,7 @@ var AuthGuard = (function () {
         this.router = router;
     }
     AuthGuard.prototype.canActivate = function (route, state) {
-        var prevStep = constants_1.STEPS[constants_1.STEPS.indexOf(state.url)];
+        var prevStep = constants_1.STEPS[constants_1.STEPS.indexOf(state.url) - 1];
         if (session_1.Session.get(prevStep) || session_1.Session.get(constants_1.LOADING)) {
             return true;
         }
