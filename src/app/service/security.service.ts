@@ -11,6 +11,7 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         let prevStep = STEPS[STEPS.indexOf(state.url)];
+
         if (Session.get(prevStep) || Session.get(LOADING)) {
             return true;
         }
@@ -18,6 +19,7 @@ export class AuthGuard implements CanActivate {
         this.router.navigateByUrl(this.router.url)
             .then((success: any) => console.log('Access denied'))
             .catch((err: any) => console.error(err));
+
         return false;
     }
 }
